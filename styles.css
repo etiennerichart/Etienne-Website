@@ -33,6 +33,11 @@ section {
     background-color: rgb(145, 223, 135);
 }
 
+#interests {
+    color: white;
+    background-color: rgb(45, 45, 162);
+}
+
 header {
     text-align: center;
     background: lightblue;
@@ -59,7 +64,7 @@ nav a {
     float: left;
     display: block;
     text-align: center;
-    padding: 14px 20px;
+    padding: 19.575px 20px;
     text-decoration: none;
     color: white;
     font-weight: normal;
@@ -85,6 +90,7 @@ footer a {
 }
 
 footer a:hover {
+    color: grey;
     border-color: white;
     border-bottom: 2px solid;
 }
@@ -106,9 +112,15 @@ h3 {
     font-style: normal;
     font-weight: 600;
 }
+
 #simpleh3 {
     font-weight: 400;
     color: rgb(81, 86, 91);
+}
+
+#simpleh32 {
+    font-weight: 400;
+    color: wheat;
 }
 
 @media screen and (max-width: 700px) {
@@ -235,10 +247,8 @@ img {
     transition: max-height 0.2s ease-out;
 }
 
-.contact {
+.center {
     text-align: center;
-    float: left;
-    width: 40%;
 }
 
 .carleton {
@@ -261,7 +271,8 @@ img {
 }
 
 .right {
-    text-align: right;
+    float: right;
+    max-width: 400px;
 }
 
 .switch {
@@ -323,6 +334,68 @@ input:checked + .slider:before {
 
 .navText {
     color: white;
-    margin-top: 14px;
-    padding-top: 10px;
+    padding-top: 19.575px;
+}
+
+.resume {
+    background-color: lightblue;
+    border: none;
+    padding: 15px 32px;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    text-emphasis: none;
+    border: 2px solid lightblue;
+}
+
+.resume:hover {
+    background-color: white;
+    padding: 15px 32px;
+}
+
+.resume a {
+    text-decoration: none;
+    text-emphasis: none;
+}
+
+.resume a:hover {
+    color: black;
+}
+
+.avatar {
+    width: 60%;
+    max-width: 320px;
+    border-radius: 50%;
+    border: 6px solid black;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: baseline;
+    align-content: space-around;
+}
+
+.flex-container > div {
+    margin: 10px;
+}
+
+.icon {
+    width: 80px;
+}
+
+.iconSpecial {
+    width: 120px;
+}
+
+.iconSpecialTwo {
+    width: 100px;
+}
+
+.margin {
+    margin-top: 23px;
+}
+
+.margin2 {
+    padding: 30px 50px;
 }

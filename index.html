@@ -23,13 +23,14 @@
     <a href="#experiences">Experience</a>
     <a href="#education">Education</a>
     <a href="#other">Other Skills</a>
+    <a href="#interests">Interests</a>
     <div class="right">
-      <span class="navText">gif</span>
       <label class="switch">
         <input type="checkbox" id="gifSwitch" checked onClick="toggleGifs(), setMaxProjectHeight()" />
         <span class="slider round"></span>
       </label>
     </div>
+    <div class="navText right">gif</div>
   </nav>
 
   <header id="top">
@@ -45,22 +46,27 @@
         people's daily lives.</p>
       <p>Visit my <a href="https://github.com/etiennerichart"><i class="fa fa-github"></i> GitHub</a> page to check out some of the stuff I've worked on!</p> 
       <br />
-      <div class="contact"><a href="https://www.linkedin.com/in/etiennerichart"><i class="fa fa-linkedin"></i></a></div><div class="contact"><a href="mailto:etiennerichart@gmail.com"><span class="glyphicon glyphicon-envelope"></span></a></div>
+      <div class="center">Contact Me:&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.linkedin.com/in/etiennerichart"><i class="fa fa-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="mailto:etiennerichart@gmail.com"><span class="glyphicon glyphicon-envelope"></span></a>
+      <br /><br />
+      <button class="resume"><a href="" download>Resume</a></button>
+      </div>
     </div>
-    <div class="half-column">
-      <span class="centered"><img src="" /></span>
+    <div class="half-column margin">
+      <div class="image"><img class="avatar" src="https://cdn.onlinewebfonts.com/svg/img_364496.png" /></div>
     </div>
   </section>
 
   <section id="experiences">
-    <h3>Experience:</h3>
+    <h3>Experience</h3>
     <div id="timeline"> 
       <div class="myTimes"><h3 id="simpleh3">Summer 2020</h3></div>
     </div>
 
     <div class="prevnext">
-      <span class="dot" id="1" onclick="currentSlide(1)"></span>
-      <span class="dot" id="2" onclick="currentSlide(2)"></span>
+      <span class="dot" id="1" onclick="currentSlide(1), setMaxProjectHeight()"></span>
+      <span class="dot" id="2" onclick="currentSlide(2), setMaxProjectHeight()"></span>
     </div>
     <br />
     <div class="row">
@@ -113,10 +119,10 @@
   </section>
 
   <section id="education">
-    <h3>Education:</h3>
+    <h3>Education</h3>
     <div class="half-column">
       <img class="carleton float-left" src="https://apps.carleton.edu/reason_package/reason_4.0/www/images/1301326.png" alt="Carleton logo"/>
-      &nbsp;&nbsp;<h3 id="simpleh3" class="float-left height-100">2019 - 2023</h3><br /><br /><br /><br />
+      &nbsp;&nbsp;<h3 id="simpleh3" class="float-left height-100">2019 - 2023</h3><br /><br /><br /><br /><br />
       <p>Computer Science Major, Possible Economics Major</p>
       Relevant <a href="https://www.carleton.edu/computer-science/courses/">CS Courses</a>:
       <ul>
@@ -153,13 +159,64 @@
 
   <section id="other">
     <div class="main">
-      <h3>Other Skills</h3>
-      <h3 id="simpleh3">Languages</h3>
-      <ul>
-        <li>Mandarin Chinese: Intermediate</li>
-        <li>French: Fluent</li>
-      </ul>
-      <p>Text text text text text text text text text text text text text</p>
+      <div class="half-column">
+        <h3>Other Skills</h3>
+        <h3 id="simpleh3">Languages</h3>
+        <ul>
+          <li>Mandarin Chinese: Intermediate</li>
+          <li>French: Fluent</li>
+        </ul>
+        <h3 id="simpleh3">Game Engines</h3>
+        <ul>
+          <li>LÖVE (Love2d)</li>
+          <li>Unity</li>
+        </ul>
+        <h3 id="simpleh3">Sports</h3>
+        <ul>
+          <li>Ultimate Frisbee</li>
+          <li>Crew (Rowing)</li>
+        </ul>
+        <h3 id="simpleh3">Clubs</h3>
+        <ul>
+          <li>Cars Club - Self-Driving Car</li>
+        </ul>
+      </div>
+      <div class="half-column flex-container right">
+        <div class="icon">
+          <img src="https://www.pinclipart.com/picdir/big/53-534873_vector-steam-java-developer-java-icon-png-clipart.png" />
+        </div>
+        <div class="iconSpecial">
+          <img src="https://www.freepngimg.com/thumb/android/72537-icons-python-programming-computer-social-tutorial.png" />
+        </div>
+        <div class="iconSpecialTwo">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/C_Sharp_logo.png" />
+        </div>
+        <div class="icon">
+          <img src="html5.png" />
+        </div>
+        <div class="icon">
+          <img src="https://3.bp.blogspot.com/-oRSUw_TmO9o/XIb61m88fcI/AAAAAAAAIq0/vnxl2zzsXEQsnHI2fH4GjKu_ZT0urRo4wCK4BGAYYCw/s1600/icon%2Bcss%2B3.png" />
+        </div>
+        <div class="icon">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Javascript-shield.svg/726px-Javascript-shield.svg.png" />
+        </div>
+        <div class="iconSpecialTwo">
+          <img src= "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/1200px-Lua-Logo.svg.png" />
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section id="interests">
+    <h3>Interests</h3>
+    <div class="flex-container">
+      <div><h3 class="margin2" id="simpleh32">Art</h3></div>
+      <div><h3 class="margin2" id="simpleh32">Video Games</h3></div>
+      <div><h3 class="margin2" id="simpleh32">Environment</h3></div>
+      <div><h3 class="margin2" id="simpleh32">Travel</h3></div>
+      <div><h3 class="margin2" id="simpleh32">Outdoors</h3></div>
+      <div><h3 class="margin2" id="simpleh32">Reading</h3></div>
     </div>
   </section>
 
