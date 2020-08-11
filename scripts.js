@@ -27,6 +27,10 @@ function setMaxProjectHeight() {
   }
 }
 
+function scrollExtra() {
+  setTimeout(document.body.scrollTop += 100, 10000);
+}
+
 function toggleGifs() {
   var checkGif = document.getElementById("gifSwitch");
   var gifs = document.getElementsByClassName("gif");
@@ -47,10 +51,13 @@ var timeIndex = 1;
 var slideIndex = 1;
 
 showTimes(timeIndex);
-refreshSlides();
 
 function refreshSlides() {
   showSlides(timeIndex)
+}
+
+function refreshTimes() {
+  showTimes(timeIndex)
 }
 
 function plusTime(n) {
@@ -71,12 +78,14 @@ function currentSlide(n) {
 function showTimes(n) {
   var i;
   var times = document.getElementsByClassName("myTimes");
-  if (n > 2) { timeIndex = 1 }
-  if (n < 1) { timeIndex = 2 }
+  if (n > 1) { timeIndex = 1 }
+  if (n < 1) { timeIndex = 1 }
   for (i = 0; i < times.length; i++) {
     times[i].style.display = "none";
   }
-  times[timeIndex - 1].style.display = "block";
+  if (times.length > 0) {
+    times[timeIndex - 1].style.display = "block";
+  }
 }
 
 var b;
@@ -101,7 +110,6 @@ function showSlides(n) {
   } 
   margins = Math.floor((getRowWidth() - (500 * b)) / (b * 2)) - 1;
   for (i = 0; i < b; i++) {
-    console.log('hi');
     slides[slideIndex-1+i].style.display = "block";
     slides[slideIndex-1+i].setAttribute("style", "margin-left: " + String(margins) + "px; margin-right: " + String(margins) + "px");
   }

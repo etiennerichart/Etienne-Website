@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+div {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+img #loadingBar {
+    max-height: 674px;
+}
+
+img #fileTree {
+    max-height: 160px;
+}
+
+img #fileTreeTwo {
+    max-height: 294px;
+}
+
+.spidermeme {
+    max-height: 400px;
+}
+
+img {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+}
+
+th {
+    padding-right: 5px;
+}
+
+#black{
+    color: black;
+}
+
+#red{
+    color: red;
+}
+
+#green{
+    color: green;
+}
+
+#yellow {
+    color: yellow;
+}
+
+#blue {
+    color: blue;
+}
+
+#magenta {
+    color: magenta;
+}
+
+#cyan {
+    color: cyan;
+}
+
+#white {
+    color: gainsboro;
+}
+
+#blank {
+    padding-right: 50px;
+}
+
+#purple {
+    color: rgb(152, 5, 152);
+}
+
+#orange {
+    color: rgb(232, 91, 3);
+}
+
+#blueT {
+    color: rgb(64, 143, 227)
+}
+
+#darkGreen {
+    color: rgb(24, 128, 24);
+}
+
+#errorGreen {
+    color: rgb(37, 211, 171);
+}
+
+#methodYellow {
+    color: rgb(203, 182, 66);
+}

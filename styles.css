@@ -138,19 +138,6 @@ h3 {
     }
 }
 
-@media screen and (max-width: 800px) {
-    body {
-        font-size: 16px;
-    }
-    header h1 {
-        font-size: 40px;
-    }
-    .half-column {
-        width: 100%;
-        margin-right: 10px;
-    }
-}
-
 .column {
     float: left;
     min-height: 50%;
@@ -403,4 +390,15 @@ input:checked + .slider:before {
 
 button {
     outline: none;
+}
+
+@media screen and (max-width: 800px) {
+    .half-column {
+        width: 100%;
+        margin-right: 10px;
+    }
+    .right {
+        float: left;
+        max-width: 100%;
+    }
 }

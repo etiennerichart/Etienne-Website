@@ -16,14 +16,15 @@
   <script src="scripts.js"></script>
 </head>
 
-<body onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), dotUpdate(2), dropdowns()" onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
+<body onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()" onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
 
   <nav>
-    <a href="#about">About</a>
+    <a href="#about" onclick="scrollExtra()">About</a>
     <a href="#experiences">Experience</a>
     <a href="#education">Education</a>
     <a href="#other">Other Skills</a>
     <a href="#interests">Interests</a>
+    <a href="./Summer 2020 Blog/bpython_symbolically_linked_file _fix.html">Blog</a>
     <div class="right">
       <label class="switch">
         <input type="checkbox" id="gifSwitch" checked onClick="toggleGifs(), setMaxProjectHeight()" />
@@ -62,6 +63,7 @@
     <h3>Experience</h3>
     <div id="timeline"> 
       <div class="myTimes"><h3 id="simpleh3">Summer 2020</h3></div>
+      <div class="myTimes"><h3 id="simpleh3">Summer 2021</h3></div>
     </div>
 
     <div class="prevnext">
@@ -91,7 +93,7 @@
           </div>
           <p>I contributed to resolving GitHub issues on the <a href="https://github.com/bpython/bpython">bpython project</a> page. Some of these issues included:</p>
           <ul>
-            <li>Entering an endless loop through symbolic links when the program is parsing through the computer files to import modules for autocomplete</li>
+            <li>Entering an endless loop through symbolic links when the program is parsing through the computer files to import modules for autocomplete <a href="Summer 2020 Blog/bpython_symbolically_linked_file _fix.html"><i class='fa fa-arrow-right' style='font-size:16px'></i></a></li>
             <li>Improving the import completion with background imports of modules to offer more detailed options</li>
             <li>Other smaller issues such as adding instructions for external editors and writing tests</li>
           </ul>
