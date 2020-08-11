@@ -17,27 +17,6 @@ section {
     overflow: hidden;
 }
 
-#experiences {
-    background-color: beige;
-}
-
-#about {
-    background-color: white;
-}
-
-#education {
-    background-color: rgb(248, 204, 109);
-}
-
-#other {
-    background-color: rgb(145, 223, 135);
-}
-
-#interests {
-    color: white;
-    background-color: rgb(45, 45, 162);
-}
-
 header {
     text-align: center;
     background: lightblue;
