@@ -16,14 +16,14 @@
   <script src="scripts.js"></script>
 </head>
 
-<body onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()" onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
+<body id="top" onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()" onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
 
   <nav>
-    <a href="#about" onclick="scrollExtra()">About</a>
-    <a href="#experiences">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#other">Other Skills</a>
-    <a href="#interests">Interests</a>
+    <a onclick="scrollAbout()">About</a>
+    <a onclick="scrollExp()">Experience</a>
+    <a onclick="scrollEdu()">Education</a>
+    <a onclick="scrollOther()">Other Skills</a>
+    <a onclick="scrollInter()">Interests</a>
     <a href="./Summer 2020 Blog/bpython_symbolically_linked_file _fix.html">Blog</a>
     <div class="right">
       <label class="switch">
@@ -34,11 +34,11 @@
     <div class="navText right">gif</div>
   </nav>
 
-  <header id="top">
+  <header>
     <h1>Etienne's Website</h1>
   </header>
 
-  <section id="about">
+  <section id="about" class="about">
     <h3>Hello, I'm Etienne<br /><span id="simpleh3">A Computer Science student</span></h3>
     <div class="half-column">
       <p>Welcome to my website. I am a sophomore at <a href="carleton.edu">Carleton College</a> in Northfield, MN.</p>
@@ -223,7 +223,7 @@
   </section>
 
   <footer>
-    <a href="#top" id="bottom">Top</a>
+    <a id="bottom" onclick="scrollY()">Top</a>
   </footer>
 </body>
 

@@ -10,6 +10,35 @@ function getRowWidth() {
     return width;
 }
 
+function scrollAbout() {
+  var y = document.getElementById("about").offsetTop - 65;
+  scrollY(y);
+}
+
+function scrollExp() {
+  var y = document.getElementById("experiences").offsetTop - 65;
+  scrollY(y);
+}
+
+function scrollEdu() {
+  var y = document.getElementById("education").offsetTop - 65;
+  scrollY(y);
+} 
+
+function scrollOther() {
+  var y = document.getElementById("other").offsetTop - 65;
+  scrollY(y);
+}
+
+function scrollInter() {
+  var y = document.getElementById("interests").offsetTop - 65;
+  scrollY(y);
+}
+
+function scrollY(y = 0) {
+  window.scrollTo(0, y);
+}
+
 var maxHeight = 0;
 
 function setMaxProjectHeight() {
@@ -25,10 +54,6 @@ function setMaxProjectHeight() {
   for(i = 0; i < cards.length; i++) {
     cards[i].style.height = String(maxHeight) + "px";
   }
-}
-
-function scrollExtra() {
-  setTimeout(document.body.scrollTop += 100, 10000);
 }
 
 function toggleGifs() {
