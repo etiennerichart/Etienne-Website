@@ -2,15 +2,7 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 div {
-    text-align: center;
-}
-
-h2 {
     text-align: center;
 }
 
