@@ -31,6 +31,7 @@ table {
 }
 
 th {
+    text-align: center;
     padding-right: 5px;
 }
 
@@ -92,4 +93,38 @@ th {
 
 #methodYellow {
     color: rgb(203, 182, 66);
+}
+
+.black {
+    background-color: black;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
+
+.green {
+    background-color: green;
+    color: white;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: rgb(50, 50, 232);
+    color: white;
+}
+
+.magenta {
+    background-color: magenta;
+    color: white;
+}
+
+.cyan {
+    background-color: cyan;
+    color: white;
 }

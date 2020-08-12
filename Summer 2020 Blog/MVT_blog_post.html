@@ -32,12 +32,13 @@ sound visualization tool.">
 <div><h3>Visualizing Music to the Terminal</h3></div>
 
 <section id="idea">
-<h3>The Idea:</h3>
+<h3 id="simpleh3">The Idea:</h3>
 <p>I first came up with this idea while learning about ANSI escape codes and
      trying to write a program that would move the terminal cursor around to 
      create things like a loading bar. I thought of using the terminal as a 
-     canvas to draw and update a picture that would represent the sound file
-      playing along.
+     canvas to draw and update a visual that would represent the sound file
+     playing along. Ansi escape codes used to create animations in the terminal 
+     similar to the spacy download bellow by <a href="https://github.com/ines/termynal"><i class="fa fa-github"></i> termynal</a>.
 </p>
 <br />
 <div><img id="loadingBar" src="https://user-images.githubusercontent.com/13643239/26935530-7f4e1152-4c6c-11e7-9e1a-06df36d4f9c9.gif" 
@@ -54,30 +55,30 @@ alt="Ansi/LoadingBar.gif" /></div>
 </section>
 
 <section id="one">
-<h3>Creating the Canvas</h3>
+<h3 id="simpleh3">Creating the Canvas</h3>
 <p>The first step in my project was to create a working canvas that would 
     display and update correctly in the terminal. I started out by creating
-     a program that would display a 80x24 rectangle that changes colors 
-     randomly a hundred times.
+     a program that would display a 80x24 rectangle of ']' that would randomly 
+     changes colors a hundred times.
 </p>
-<p>To do this I used the u"\u001b[{n}A" escape code that moves the 
-     cursor up n rows, the u"\u001b[{n}D" that moves the cursor left 
-     n columns, and u"\u001b[{30-37}m" code that sets the text color 
-     to one of 8 different colors. I also finished the code with 
-     u"\u001b[0m" that resets the color to default.
+<p>To do this I used the <kbd>u"\u001b[{n}A</kbd> escape code that moves the 
+     cursor up n rows, the <kbd>u"\u001b[{n}D"</kbd> that moves the cursor left 
+     n columns, and <kbd>u"\u001b[{30-37}m"</kbd> code that sets the text color 
+     to one of 8 different colors. Once the canvas finished displaying I used the
+     <kbd>u"\u001b[0m"</kbd> to reset the terminal to its default settings.
 </p>
 </section>
 
 
 <section id="two">
-<h3>Some useful ANSI Escape Codes</h3>
-<table>
+<h3 id="simpleh3">Some useful ANSI Escape Codes</h3>
+<table class="table table-hover">
     <thead>
         <tr>
             <th>Color</th>
             <th>ANSI Esc Code</th>
             <th id="blank"></th>
-            <th>Cursor Direction</th>
+            <th>Background Color</th>
             <th>ANSI Esc Code</th>
         </tr>
     </thead>
@@ -86,56 +87,103 @@ alt="Ansi/LoadingBar.gif" /></div>
             <td id="black">Black</td>
             <td>\u001b[30m</td>
             <td></td>
-            <td>Up{n}</td>
-            <td>\u001b[{n}A</td>
+            <td class="black">Black</td>
+            <td>\u001b[40m</td>
         </tr>
         <tr>
             <td id="red">Red</td>
             <td>\u001b[31m</td>
             <td></td>
-            <td>Down{n}</td>
-            <td>\u001b[{n}B</td>
+            <td class="red">Red</td>
+            <td>\u001b[41m</td>
         </tr>
         <tr>
             <td id="green">Green</td>
             <td>\u001b[32m</td>
             <td></td>
-            <td>Right{n}</td>
-            <td>\u001b[{n}C</td>
+            <td class="green">Green</td>
+            <td>\u001b[42m</td>
         </tr>
         <tr>
             <td id="yellow">Yellow</td>
             <td>\u001b[33m</td>
             <td></td>
-            <td>Left{n}</td>
-            <td>\u001b[{n}D</td>
+            <td class="yellow">Yellow</td>
+            <td>\u001b[43m</td>
         </tr>
         <tr>
             <td id="blue">Blue</td>
             <td>\u001b[34m</td>
+            <td></td>
+            <td class="blue">Blue</td>
+            <td>\u001b[44m</td>
         </tr>
         <tr>
             <td id="magenta">Magenta</td>
             <td>\u001b[35m</td>
+            <td></td>
+            <td class="magenta">Magenta</td>
+            <td>\u001b[45m</td>
         </tr>
         <tr>
             <td id="cyan">Cyan</td>
             <td>\u001b[36m</td>
+            <td></td>
+            <td class="cyan">Cyan</td>
+            <td>\u001b[46m</td>
         </tr>
         <tr>
             <td id="white">White</td>
             <td>\u001b[37m</td>
+            <td></td>
+            <td>White</td>
+            <td>\u001b[47m</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th>Cursor Movement</th>
+            <th>ANSI Esc Code</th>
+            <th></th>
+            <th>Text Decoration</th>
+            <th>ANSI Esc Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Up{n}</td>
+            <td>\u001b[{n}A</td>
+            <td></td>
+            <td><span class="font-weight-bold">Bold</span></td>
+            <td>\u001b[1m</td>
         </tr>
         <tr>
-            <td>Reset</td>
+            <td>Down{n}</td>
+            <td>\u001b[{n}B</td>
+            <td></td>
+            <td><span>Underline</span></td>
+            <td>\u001b[4m</td>
+        </tr>
+        <tr>
+            <td>Right{n}</td>
+            <td>\u001b[{n}C</td>
+            <td></td>
+            <th>Reset</th>
             <td>\u001b[0m</td>
+        </tr>
+        <tr>
+            <td>Left{n}</td>
+            <td>\u001b[{n}D</td>
+            <td></td>
+            <th>Bright Colors</th>
+            <td>replace 'm' with ';1m'</td>
         </tr>
     </tbody>
 </table>
 </section>
 
 <section id="three">
-    <h3>Adjusting the Canvas to the Terminal</h3>
+    <h3 id="simpleh3">Adjusting the Canvas to the Terminal</h3>
     <p>To make sure the image in viewable I needed the canvas to adjust 
         to the size of the terminal. To do this I had to find a way to
         get the terminal's size.
@@ -148,7 +196,31 @@ alt="Ansi/LoadingBar.gif" /></div>
          Using this code which returns the rows and columns as a String:
     </p>
     
-    <code>import os<br />rows, columns = os.popen('stty size', 'r').read().split()</code>
+    <pre><code>
+        <span id="purple">import</span> os
+        rows, columns = os.popen(<span id="orange">'stty size'</span>, <span id="orange"></span>'r'</span>).read().split()
+    </code></pre>
+
+    <p>With this I was able to initalize a table that fit inside the terminal
+        without having the table wrap around if a hardcoded table had been bigger 
+        than the terminal.
+    </p>
+</section>
+
+<section id="four">
+    <h3 id="simpleh3">Reading a WAV File</h3>
+    
+    <p>Next I had to find a way to read a soundfile and ensure the visuals matched up. 
+        I decided to use the WAV file format and began to do some research. In the end 
+        I found three relevant sources. <a href="http://soundfile.sapp.org/doc/WaveFormat/">One</a> 
+        on the way WAV files are stored, another, <a href="https://docs.python.org/3/library/wave.html">the docs</a> 
+        on the python wave module used to read wav file and a 
+        <a href="https://www.cameronmacleod.com/blog/reading-wave-python">third one</a> which detailed an
+        example program using the wave module. 
+    </p>
+    <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three chunks: 
+        <div><img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif" alt="Image of the RIFF file breakdown" /> </div> 
+    </p>
 </section>
 
 
