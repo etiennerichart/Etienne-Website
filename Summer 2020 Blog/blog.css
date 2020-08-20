@@ -69,4 +69,10 @@ section {
     background-color: white;
     padding: 20px;
     width: 75%;
+    text-align: center;
+}
+
+.textleft{
+    display: inline-block;
+    text-align: left;
 }
