@@ -85,7 +85,6 @@ a {
 .half-column {
     width: 50%;
     float: left;
-    display: inline-block;
 }
 
 h3 {

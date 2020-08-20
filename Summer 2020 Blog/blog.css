@@ -32,7 +32,7 @@ div {
 .text {
     background-color: white;
     color: black;
-    font-size: 10vw; 
+    font-size: min(10vw, 100px); 
     font-weight: bold;
     margin: 0 auto;
     padding: 10px;
