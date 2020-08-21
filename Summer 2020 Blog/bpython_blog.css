@@ -5,3 +5,7 @@ div {
 .bpythonlogo {
     max-height: 100px;
 }
+
+#terminal {
+    padding-top: 0;
+}
