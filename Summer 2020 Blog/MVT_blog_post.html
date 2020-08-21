@@ -1,232 +1,245 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="author" content="Etienne Richart">
-<meta property="description" content="This is a blog post about my WAV visualization project">
-<meta property="og:title" content="Visualizing music on the terminal">
-<meta property="og:description" content="Hey everyone, come and learn about how I made a 
-sound visualization tool.">
-<meta property="og:url" content="REMIND ME TO ADD A URL IN META">
-<title>Visualizing music on the terminal</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="../foundations.css" rel="stylesheet" type="text/css" />
-<link href="styles.css" rel="stylesheet" type="text/css" />
-<script src="../basics.js" type="text/javascript"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Etienne Richart" />
+    <title>Visualizing WAVs on the Terminal</title>
+    <meta property="description" content="This is a blog post about my WAV visualization project">
+    <meta property="og:title" content="Visualizing WAV files on the terminal">
+    <meta property="og:type" content="blog" />
+    <meta property="og:description"
+        content="Hey everyone, come and learn about how I made a sound visualization tool for the terminal.">
+    <meta property="og:url" content="REMIND ME TO ADD A URL IN META" />
+    <meta property="og:site_name" content="Etienne's Website" />
+    <meta name="keywords" content="Etienne Richart, blog, computers, CS, curtsies, terminal, python, WAV" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../foundations.css" rel="stylesheet" type="text/css" />
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <script src="../basics.js" type="text/javascript"></script>
 
 </head>
 
 <body onload="getNavHeight()" onresize="getNavHeight()">
 
-<nav>
-  <a href="../index.html">Home</a>
-  <a href="./blog.html">Blog</a>
-</nav>
+    <nav>
+        <a href="../index.html">Home</a>
+        <a href="./blog.html">Blog</a>
+    </nav>
 
-<header  id="top">
-<h1>Etienne's Blog</h1>
-</header>
-<br />
-<div><h3>Visualizing Music to the Terminal</h3></div>
+    <header id="top">
+        <h1>Etienne's Blog</h1>
+    </header>
+    <br />
+    <div>
+        <h3>Visualizing Music to the Terminal</h3>
+    </div>
 
-<section id="idea">
-<h3 id="simpleh3">The Idea:</h3>
-<p>I first came up with this idea while learning about ANSI escape codes and
-     trying to write a program that would move the terminal cursor around to 
-     create things like a loading bar. I thought of using the terminal as a 
-     canvas to draw and update a visual that would represent the sound file
-     playing along. Ansi escape codes used to create animations in the terminal 
-     similar to the spacy download bellow by <a href="https://github.com/ines/termynal"><i class="fa fa-github"></i> termynal</a>.
-</p>
-<br />
-<div><img id="loadingBar" src="https://user-images.githubusercontent.com/13643239/26935530-7f4e1152-4c6c-11e7-9e1a-06df36d4f9c9.gif" 
-alt="Ansi/LoadingBar.gif" /></div>
-<br />
-<p>If you are interested in learning more about the terminal and ANSI escape codes,  I recomend taking a look 
-    at these resources:
-    <ul>
-        <li><a href="https://www.youtube.com/watch?v=rSnMoClPH2E">Terminal Whispering</a></li>
-        <li><a href="https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html">Build your own Command Line with ANSI escape codes</a></li>
-        <li><a href="https://notes.burke.libbey.me/ansi-escape-codes/">Everything you never wanted to know about ANSI escape codes</a></li>
-    </ul>
-</p>
-</section>
+    <section id="idea">
+        <h3 id="simpleh3">The Idea:</h3>
+        <p>I first came up with this idea while learning about ANSI escape codes and
+            trying to write a program that would move the terminal cursor around to
+            create things like a loading bar. I thought of using the terminal as a
+            canvas to draw and update a visual that would represent the sound file
+            playing along. Ansi escape codes used to create animations in the terminal
+            similar to the spacy download bellow by <a href="https://github.com/ines/termynal"><i
+                    class="fa fa-github"></i> termynal</a>.
+        </p>
+        <br />
+        <div><img id="loadingBar"
+                src="https://user-images.githubusercontent.com/13643239/26935530-7f4e1152-4c6c-11e7-9e1a-06df36d4f9c9.gif"
+                alt="Ansi/LoadingBar.gif" /></div>
+        <br />
+        <p>If you are interested in learning more about the terminal and ANSI escape codes, I recomend taking a look
+            at these resources:
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=rSnMoClPH2E">Terminal Whispering</a></li>
+            <li><a href="https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html">Build your own
+                    Command Line with ANSI escape codes</a></li>
+            <li><a href="https://notes.burke.libbey.me/ansi-escape-codes/">Everything you never wanted to know about
+                    ANSI escape codes</a></li>
+        </ul>
+        </p>
+    </section>
 
-<section id="one">
-<h3 id="simpleh3">Creating the Canvas</h3>
-<p>The first step in my project was to create a working canvas that would 
-    display and update correctly in the terminal. I started out by creating
-     a program that would display a 80x24 rectangle of ']' that would randomly 
-     changes colors a hundred times.
-</p>
-<p>To do this I used the <kbd>u"\u001b[{n}A</kbd> escape code that moves the 
-     cursor up n rows, the <kbd>u"\u001b[{n}D"</kbd> that moves the cursor left 
-     n columns, and <kbd>u"\u001b[{30-37}m"</kbd> code that sets the text color 
-     to one of 8 different colors. Once the canvas finished displaying I used the
-     <kbd>u"\u001b[0m"</kbd> to reset the terminal to its default settings.
-</p>
-</section>
+    <section id="one">
+        <h3 id="simpleh3">Creating the Canvas</h3>
+        <p>The first step in my project was to create a working canvas that would
+            display and update correctly in the terminal. I started out by creating
+            a program that would display a 80x24 rectangle of ']' that would randomly
+            changes colors a hundred times.
+        </p>
+        <p>To do this I used the <kbd>u"\u001b[{n}A</kbd> escape code that moves the
+            cursor up n rows, the <kbd>u"\u001b[{n}D"</kbd> that moves the cursor left
+            n columns, and <kbd>u"\u001b[{30-37}m"</kbd> code that sets the text color
+            to one of 8 different colors. Once the canvas finished displaying I used the
+            <kbd>u"\u001b[0m"</kbd> to reset the terminal to its default settings.
+        </p>
+    </section>
 
 
-<section id="two">
-<h3 id="simpleh3">Some useful ANSI Escape Codes</h3>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Color</th>
-            <th>ANSI Esc Code</th>
-            <th id="blank"></th>
-            <th>Background Color</th>
-            <th>ANSI Esc Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td id="black">Black</td>
-            <td>\u001b[30m</td>
-            <td></td>
-            <td class="black">Black</td>
-            <td>\u001b[40m</td>
-        </tr>
-        <tr>
-            <td id="red">Red</td>
-            <td>\u001b[31m</td>
-            <td></td>
-            <td class="red">Red</td>
-            <td>\u001b[41m</td>
-        </tr>
-        <tr>
-            <td id="green">Green</td>
-            <td>\u001b[32m</td>
-            <td></td>
-            <td class="green">Green</td>
-            <td>\u001b[42m</td>
-        </tr>
-        <tr>
-            <td id="yellow">Yellow</td>
-            <td>\u001b[33m</td>
-            <td></td>
-            <td class="yellow">Yellow</td>
-            <td>\u001b[43m</td>
-        </tr>
-        <tr>
-            <td id="blue">Blue</td>
-            <td>\u001b[34m</td>
-            <td></td>
-            <td class="blue">Blue</td>
-            <td>\u001b[44m</td>
-        </tr>
-        <tr>
-            <td id="magenta">Magenta</td>
-            <td>\u001b[35m</td>
-            <td></td>
-            <td class="magenta">Magenta</td>
-            <td>\u001b[45m</td>
-        </tr>
-        <tr>
-            <td id="cyan">Cyan</td>
-            <td>\u001b[36m</td>
-            <td></td>
-            <td class="cyan">Cyan</td>
-            <td>\u001b[46m</td>
-        </tr>
-        <tr>
-            <td id="white">White</td>
-            <td>\u001b[37m</td>
-            <td></td>
-            <td>White</td>
-            <td>\u001b[47m</td>
-        </tr>
-    </tbody>
-    <thead>
-        <tr>
-            <th>Cursor Movement</th>
-            <th>ANSI Esc Code</th>
-            <th></th>
-            <th>Text Decoration</th>
-            <th>ANSI Esc Code</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Up{n}</td>
-            <td>\u001b[{n}A</td>
-            <td></td>
-            <td><span class="font-weight-bold">Bold</span></td>
-            <td>\u001b[1m</td>
-        </tr>
-        <tr>
-            <td>Down{n}</td>
-            <td>\u001b[{n}B</td>
-            <td></td>
-            <td><span>Underline</span></td>
-            <td>\u001b[4m</td>
-        </tr>
-        <tr>
-            <td>Right{n}</td>
-            <td>\u001b[{n}C</td>
-            <td></td>
-            <th>Reset</th>
-            <td>\u001b[0m</td>
-        </tr>
-        <tr>
-            <td>Left{n}</td>
-            <td>\u001b[{n}D</td>
-            <td></td>
-            <th>Bright Colors</th>
-            <td>replace 'm' with ';1m'</td>
-        </tr>
-    </tbody>
-</table>
-</section>
+    <section id="two">
+        <h3 id="simpleh3">Some useful ANSI Escape Codes</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Color</th>
+                    <th>ANSI Esc Code</th>
+                    <th id="blank"></th>
+                    <th>Background Color</th>
+                    <th>ANSI Esc Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="black">Black</td>
+                    <td>\u001b[30m</td>
+                    <td></td>
+                    <td class="black">Black</td>
+                    <td>\u001b[40m</td>
+                </tr>
+                <tr>
+                    <td id="red">Red</td>
+                    <td>\u001b[31m</td>
+                    <td></td>
+                    <td class="red">Red</td>
+                    <td>\u001b[41m</td>
+                </tr>
+                <tr>
+                    <td id="green">Green</td>
+                    <td>\u001b[32m</td>
+                    <td></td>
+                    <td class="green">Green</td>
+                    <td>\u001b[42m</td>
+                </tr>
+                <tr>
+                    <td id="yellow">Yellow</td>
+                    <td>\u001b[33m</td>
+                    <td></td>
+                    <td class="yellow">Yellow</td>
+                    <td>\u001b[43m</td>
+                </tr>
+                <tr>
+                    <td id="blue">Blue</td>
+                    <td>\u001b[34m</td>
+                    <td></td>
+                    <td class="blue">Blue</td>
+                    <td>\u001b[44m</td>
+                </tr>
+                <tr>
+                    <td id="magenta">Magenta</td>
+                    <td>\u001b[35m</td>
+                    <td></td>
+                    <td class="magenta">Magenta</td>
+                    <td>\u001b[45m</td>
+                </tr>
+                <tr>
+                    <td id="cyan">Cyan</td>
+                    <td>\u001b[36m</td>
+                    <td></td>
+                    <td class="cyan">Cyan</td>
+                    <td>\u001b[46m</td>
+                </tr>
+                <tr>
+                    <td id="white">White</td>
+                    <td>\u001b[37m</td>
+                    <td></td>
+                    <td>White</td>
+                    <td>\u001b[47m</td>
+                </tr>
+            </tbody>
+            <thead>
+                <tr>
+                    <th>Cursor Movement</th>
+                    <th>ANSI Esc Code</th>
+                    <th></th>
+                    <th>Text Decoration</th>
+                    <th>ANSI Esc Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Up{n}</td>
+                    <td>\u001b[{n}A</td>
+                    <td></td>
+                    <td><span class="font-weight-bold">Bold</span></td>
+                    <td>\u001b[1m</td>
+                </tr>
+                <tr>
+                    <td>Down{n}</td>
+                    <td>\u001b[{n}B</td>
+                    <td></td>
+                    <td><span>Underline</span></td>
+                    <td>\u001b[4m</td>
+                </tr>
+                <tr>
+                    <td>Right{n}</td>
+                    <td>\u001b[{n}C</td>
+                    <td></td>
+                    <th>Reset</th>
+                    <td>\u001b[0m</td>
+                </tr>
+                <tr>
+                    <td>Left{n}</td>
+                    <td>\u001b[{n}D</td>
+                    <td></td>
+                    <th>Bright Colors</th>
+                    <td>replace 'm' with ';1m'</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-<section id="three">
-    <h3 id="simpleh3">Adjusting the Canvas to the Terminal</h3>
-    <p>To make sure the image in viewable I needed the canvas to adjust 
-        to the size of the terminal. To do this I had to find a way to
-        get the terminal's size.
-    </p>
-    <p>A terminal is made of a certain amount of rows and columns. Each
-        cell holding one character (as long as they are of standard width).
-         After some research I found an easy way to get the number of rows 
-         and columns 
-         <a href="https://stackoverflow.com/questions/566746/how-to-get-linux-console-window-width-in-python">here</a>.
-         Using this code which returns the rows and columns as a String:
-    </p>
-    
-    <pre><code>
+    <section id="three">
+        <h3 id="simpleh3">Adjusting the Canvas to the Terminal</h3>
+        <p>To make sure the image in viewable I needed the canvas to adjust
+            to the size of the terminal. To do this I had to find a way to
+            get the terminal's size.
+        </p>
+        <p>A terminal is made of a certain amount of rows and columns. Each
+            cell holding one character (as long as they are of standard width).
+            After some research I found an easy way to get the number of rows
+            and columns
+            <a
+                href="https://stackoverflow.com/questions/566746/how-to-get-linux-console-window-width-in-python">here</a>.
+            Using this code which returns the rows and columns as a String:
+        </p>
+
+        <pre><code>
         <span id="purple">import</span> os
         rows, columns = os.popen(<span id="orange">'stty size'</span>, <span id="orange"></span>'r'</span>).read().split()
     </code></pre>
 
-    <p>With this I was able to initalize a table that fit inside the terminal
-        without having the table wrap around if a hardcoded table had been bigger 
-        than the terminal.
-    </p>
-</section>
+        <p>With this I was able to initalize a table that fit inside the terminal
+            without having the table wrap around if a hardcoded table had been bigger
+            than the terminal.
+        </p>
+    </section>
 
-<section id="four">
-    <h3 id="simpleh3">Reading a WAV File</h3>
-    
-    <p>Next I had to find a way to read a soundfile and ensure the visuals matched up. 
-        I decided to use the WAV file format and began to do some research. In the end 
-        I found three relevant sources. <a href="http://soundfile.sapp.org/doc/WaveFormat/">One</a> 
-        on the way WAV files are stored, another, <a href="https://docs.python.org/3/library/wave.html">the docs</a> 
-        on the python wave module used to read wav file and a 
-        <a href="https://www.cameronmacleod.com/blog/reading-wave-python">third one</a> which detailed an
-        example program using the wave module. 
-    </p>
-    <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three chunks: 
-        <div><img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif" alt="Image of the RIFF file breakdown" /> </div> 
-    </p>
-</section>
+    <section id="four">
+        <h3 id="simpleh3">Reading a WAV File</h3>
+
+        <p>Next I had to find a way to read a soundfile and ensure the visuals matched up.
+            I decided to use the WAV file format and began to do some research. In the end
+            I found three relevant sources. <a href="http://soundfile.sapp.org/doc/WaveFormat/">One</a>
+            on the way WAV files are stored, another, <a href="https://docs.python.org/3/library/wave.html">the docs</a>
+            on the python wave module used to read wav file and a
+            <a href="https://www.cameronmacleod.com/blog/reading-wave-python">third one</a> which detailed an
+            example program using the wave module.
+        </p>
+        <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three chunks:
+        <div><img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif"
+                alt="Image of the RIFF file breakdown" /> </div>
+        </p>
+    </section>
 
 
-<footer>
-  <a id="bottom" onclick="scrollY()">Top</a>
-</footer>
+    <footer>
+        <a id="bottom" onclick="scrollY()">Top</a>
+    </footer>
 
 </body>
+
 </html>

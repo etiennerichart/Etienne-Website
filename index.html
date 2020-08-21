@@ -2,14 +2,17 @@
 <html lang="en-US">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="Etienne Richart">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Etienne Richart" />
+  <title>Etienne's Website</title>
   <meta property="description" content="Hey everyone, I'm Etienne Richart a prospective computer scientist.">
-  <meta property="og:title" content="Etienne's Home Site">
+  <meta property="og:title" content="Etienne's Webite">
+  <meta property="og:type" content="blog" />
   <meta property="og:description" content="Hey everyone, come and see what cool projects I have been up to.">
   <meta property="og:url" content="REMIND US TO ADD A URL IN META">
-  <title>Etienne's Personal Site</title>
+  <meta property="og:site_name" content="Etienne's Website" />
+  <meta name="keywords" content="Etienne Richart, blog, computers, CS, bpython, curtsies, terminal, python" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="foundations.css" rel="stylesheet" type="text/css" />
@@ -18,7 +21,9 @@
   <script src="scripts.js" type="text/javascript"></script>
 </head>
 
-<body id="top" onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()" onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
+<body id="top"
+  onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()"
+  onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
 
   <nav>
     <a onclick="scrollAbout()">About</a>
@@ -47,13 +52,14 @@
       <p>I am exploring the different fields of CS. I'm interested in the aplications of CS for raising awareness
         and educating people about social and environmental problems as well as the ways it can be incorporated into
         people's daily lives.</p>
-      <p>Visit my <a href="https://github.com/etiennerichart"><i class="fa fa-github"></i> GitHub</a> page to check out some of the stuff I've worked on!</p> 
+      <p>Visit my <a href="https://github.com/etiennerichart"><i class="fa fa-github"></i> GitHub</a> page to check out
+        some of the stuff I've worked on!</p>
       <br />
       <div class="center">Contact me:&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="https://www.linkedin.com/in/etiennerichart"><i class="fa fa-linkedin"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="mailto:etiennerichart@gmail.com"><span class="glyphicon glyphicon-envelope"></span></a>
-      <br /><br />
-      <button class="resume"><a href="Etienne Richart - Resume.pdf" download>Resume</a></button>
+        <br /><br />
+        <button class="resume"><a href="Etienne Richart - Resume.pdf" download>Resume</a></button>
       </div>
     </div>
     <div class="half-column margin">
@@ -63,9 +69,13 @@
 
   <section id="experiences">
     <h3>Experience</h3>
-    <div id="timeline"> 
-      <div class="myTimes"><h3 id="simpleh3">Summer 2020</h3></div>
-      <div class="myTimes"><h3 id="simpleh3">Summer 2021</h3></div>
+    <div id="timeline">
+      <div class="myTimes">
+        <h3 id="simpleh3">Summer 2020</h3>
+      </div>
+      <div class="myTimes">
+        <h3 id="simpleh3">Summer 2021</h3>
+      </div>
     </div>
 
     <div class="prevnext">
@@ -74,17 +84,22 @@
     </div>
     <br />
     <div class="row">
-    <div class="mySlides column">
-      <div class="card">
-        <div class="image">
-        <!--gif src https://camo.githubusercontent.com/acbbe6b0cb7bae7920173614fb58344d94036b95/68747470733a2f2f62707974686f6e2d696e7465727072657465722e6f72672f696d616765732f6d6174682e676966 from https://github.com/bpython/bpython-->
-        <img class="bpython gif" src="bpythongif.gif" alt="bpython example" />
-        </div>
-        <div class="info">
-          <button class="collapsible experience"><h3><a href="https://bpython-interpreter.org/"><img class="bpythontwo" src="https://docs.bpython-interpreter.org/en/latest/_static/logo.png" alt="bpython logo" />bpython</a>&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
-          <div class="content">
-            <p>bpython is a fancy interface to the Python interpreter for Linux, BSD, OS X and Windows (with some work). bpython is released under the MIT License. It has the following (special) features:</p>
-            <ol>
+      <div class="mySlides column">
+        <div class="card">
+          <div class="image">
+            <!--gif src https://camo.githubusercontent.com/acbbe6b0cb7bae7920173614fb58344d94036b95/68747470733a2f2f62707974686f6e2d696e7465727072657465722e6f72672f696d616765732f6d6174682e676966 from https://github.com/bpython/bpython-->
+            <img class="bpython gif" src="bpythongif.gif" alt="bpython example" />
+          </div>
+          <div class="info">
+            <button class="collapsible experience">
+              <h3><a href="https://bpython-interpreter.org/"><img class="bpythontwo"
+                    src="https://docs.bpython-interpreter.org/en/latest/_static/logo.png"
+                    alt="bpython logo" />bpython</a>&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3>
+            </button>
+            <div class="content">
+              <p>bpython is a fancy interface to the Python interpreter for Linux, BSD, OS X and Windows (with some
+                work). bpython is released under the MIT License. It has the following (special) features:</p>
+              <ol>
                 <li>In-line syntax highlighting</li>
                 <li>Readline-like autocomplete with suggestions displayed as you type.</li>
                 <li>Expected parameter list for any Python function.</li>
@@ -92,41 +107,55 @@
                 <li>Send the code you've entered off to a pastebin.</li>
                 <li>Save the code you've entered to a file.</li>
                 <li>Auto-indentation.</li>
-            </ol>
+              </ol>
+            </div>
+            <p>I contributed to resolving GitHub issues on the <a href="https://github.com/bpython/bpython">bpython
+                project</a> page. Some of these issues included:</p>
+            <ul>
+              <li>Entering an endless loop through symbolic links when the program is parsing through the computer files
+                to import modules for autocomplete <a
+                  href="Summer 2020 Blog/bpython_symbolically_linked_file _fix.html"><i class='fa fa-arrow-right'
+                    style='font-size:16px'></i></a></li>
+              <li>Improving the import completion with background imports of modules to offer more detailed options</li>
+              <li>Other smaller issues such as adding instructions for external editors and writing tests</li>
+            </ul>
           </div>
-          <p>I contributed to resolving GitHub issues on the <a href="https://github.com/bpython/bpython">bpython project</a> page. Some of these issues included:</p>
-          <ul>
-            <li>Entering an endless loop through symbolic links when the program is parsing through the computer files to import modules for autocomplete <a href="Summer 2020 Blog/bpython_symbolically_linked_file _fix.html"><i class='fa fa-arrow-right' style='font-size:16px'></i></a></li>
-            <li>Improving the import completion with background imports of modules to offer more detailed options</li>
-            <li>Other smaller issues such as adding instructions for external editors and writing tests</li>
-          </ul>
         </div>
       </div>
-    </div>
-    <div class="mySlides column">
-      <div class="card">
-        <div class="image"><img class="curtsies gif" src="tron.gif" alt="Using curtsies for Tron game" /></div>
-        <div class="info">
-          <button class="collapsible experience"><h3><a href="https://curtsies.readthedocs.io/en/latest/"><img class="bpythontwo" alt="Curtsies logo" src="http://ballingt.com/assets/curtsiestitle.png" /></a>&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
-          <div class="content">
-            <p>Curtsies is a Python 2.6+ & 3.3+ compatible library for interacting with the terminal. It uses FmtStr objects to display strings 
-            with colors and styles in a terminal with ANSI escape sequences. The above gif is a Tron game by <a href="https://github.com/rybarczykj"><i class="fa fa-github"></i> Jack Rybarczyk</a> made with Curtsies.</p>
+      <div class="mySlides column">
+        <div class="card">
+          <div class="image"><img class="curtsies gif" src="tron.gif" alt="Using curtsies for Tron game" /></div>
+          <div class="info">
+            <button class="collapsible experience">
+              <h3><a href="https://curtsies.readthedocs.io/en/latest/"><img class="bpythontwo" alt="Curtsies logo"
+                    src="http://ballingt.com/assets/curtsiestitle.png" /></a>&nbsp;&nbsp;<span
+                  class="glyphicon glyphicon-menu-down"></span></h3>
+            </button>
+            <div class="content">
+              <p>Curtsies is a Python 2.6+ & 3.3+ compatible library for interacting with the terminal. It uses FmtStr
+                objects to display strings
+                with colors and styles in a terminal with ANSI escape sequences. The above gif is a Tron game by <a
+                  href="https://github.com/rybarczykj"><i class="fa fa-github"></i> Jack Rybarczyk</a> made with
+                Curtsies.</p>
+            </div>
+            <p>I investigated GitHub isues on the <a href="https://github.com/bpython/curtsies">Curtsies project</a>
+              page. Some of these issues included:</p>
+            <ul>
+              <li>Writing more detailed error messages with visualizations that cover some more edge cases</li>
+              <li>Other smaller issues such as making the readme work with PyPi, reformatting the program and adding
+                more key combinations</li>
+            </ul>
           </div>
-          <p>I investigated GitHub isues on the <a href="https://github.com/bpython/curtsies">Curtsies project</a> page. Some of these issues included:</p>
-          <ul>
-            <li>Writing more detailed error messages with visualizations that cover some more edge cases</li>
-            <li>Other smaller issues such as making the readme work with PyPi, reformatting the program and adding more key combinations</li>
-          </ul>
         </div>
       </div>
-    </div>
     </div>
   </section>
 
   <section id="education">
     <h3>Education</h3>
     <div class="half-column">
-      <img class="carleton float-left" src="https://apps.carleton.edu/reason_package/reason_4.0/www/images/1301326.png" alt="Carleton logo"/>
+      <img class="carleton float-left" src="https://apps.carleton.edu/reason_package/reason_4.0/www/images/1301326.png"
+        alt="Carleton logo" />
       &nbsp;&nbsp;<h3 id="simpleh3" class="float-left height-100">2019 - 2023</h3><br /><br /><br /><br /><br />
       <p>Computer Science Major, Possible Economics Major</p>
       Relevant <a href="https://www.carleton.edu/computer-science/courses/">CS Courses</a>:
@@ -141,25 +170,31 @@
     </div>
     <div class="half-column">
       <h3 id="simpleh3">Online Courses</h4>
-      <button class="collapsible">Python&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
-        <div class="content">
-          <ul>
-            <li><a href="https://www.udemy.com/course/automate/">Automate the Boring Stuff with Python Programming</a></li>
-          </ul>
-        </div>
-      <button class="collapsible">Web Design&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
-        <div class="content">
-          <ul>
-            <li><a href="https://www.udemy.com/course/complete-javascript/">JavaScript Programming from A-Z: Learn to Code in JavaScript</a></li>
-            <li><a href="https://www.udemy.com/course/html-javascript-bootstrap-certification-course/">HTML, JavaScript, & Bootstrap - Certification Course</a></li>
-          </ul>
-        </div>
-      <button class="collapsible">Game Design&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
-        <div class="content">
-          <ul>
-            <li><a href="https://courses.edx.org/courses/course-v1:HarvardX+CS50G+Games/course/">HarvardX: CS50's Introduction to Game Development</a></li>
-          </ul>
-        </div>
+        <button class="collapsible">Python&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3></button>
+      <div class="content">
+        <ul>
+          <li><a href="https://www.udemy.com/course/automate/">Automate the Boring Stuff with Python Programming</a>
+          </li>
+        </ul>
+      </div>
+      <button class="collapsible">Web Design&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3>
+        </button>
+      <div class="content">
+        <ul>
+          <li><a href="https://www.udemy.com/course/complete-javascript/">JavaScript Programming from A-Z: Learn to Code
+              in JavaScript</a></li>
+          <li><a href="https://www.udemy.com/course/html-javascript-bootstrap-certification-course/">HTML, JavaScript, &
+              Bootstrap - Certification Course</a></li>
+        </ul>
+      </div>
+      <button class="collapsible">Game Design&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span></h3>
+        </button>
+      <div class="content">
+        <ul>
+          <li><a href="https://courses.edx.org/courses/course-v1:HarvardX+CS50G+Games/course/">HarvardX: CS50's
+              Introduction to Game Development</a></li>
+        </ul>
+      </div>
   </section>
 
   <section id="other">
@@ -188,10 +223,12 @@
       </div>
       <div class="half-column flex-container right">
         <div class="icon">
-          <img src="https://www.pinclipart.com/picdir/big/53-534873_vector-steam-java-developer-java-icon-png-clipart.png" />
+          <img
+            src="https://www.pinclipart.com/picdir/big/53-534873_vector-steam-java-developer-java-icon-png-clipart.png" />
         </div>
         <div class="iconSpecial">
-          <img src="https://www.freepngimg.com/thumb/android/72537-icons-python-programming-computer-social-tutorial.png" />
+          <img
+            src="https://www.freepngimg.com/thumb/android/72537-icons-python-programming-computer-social-tutorial.png" />
         </div>
         <div class="iconSpecialTwo">
           <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/C_Sharp_logo.png" />
@@ -200,15 +237,17 @@
           <img src="html5.png" />
         </div>
         <div class="icon">
-          <img src="https://3.bp.blogspot.com/-oRSUw_TmO9o/XIb61m88fcI/AAAAAAAAIq0/vnxl2zzsXEQsnHI2fH4GjKu_ZT0urRo4wCK4BGAYYCw/s1600/icon%2Bcss%2B3.png" />
+          <img
+            src="https://3.bp.blogspot.com/-oRSUw_TmO9o/XIb61m88fcI/AAAAAAAAIq0/vnxl2zzsXEQsnHI2fH4GjKu_ZT0urRo4wCK4BGAYYCw/s1600/icon%2Bcss%2B3.png" />
         </div>
         <div class="icon">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Javascript-shield.svg/726px-Javascript-shield.svg.png" />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Javascript-shield.svg/726px-Javascript-shield.svg.png" />
         </div>
         <div class="iconSpecialTwo">
-          <img src= "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/1200px-Lua-Logo.svg.png" />
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Lua-Logo.svg/1200px-Lua-Logo.svg.png" />
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -216,12 +255,24 @@
   <section id="interests">
     <h3>Interests</h3>
     <div class="flex-container">
-      <div><h3 class="margin2" id="simpleh32">Art</h3></div>
-      <div><h3 class="margin2" id="simpleh32">Video Games</h3></div>
-      <div><h3 class="margin2" id="simpleh32">Environment</h3></div>
-      <div><h3 class="margin2" id="simpleh32">Travel</h3></div>
-      <div><h3 class="margin2" id="simpleh32">Outdoors</h3></div>
-      <div><h3 class="margin2" id="simpleh32">Reading</h3></div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Art</h3>
+      </div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Video Games</h3>
+      </div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Environment</h3>
+      </div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Travel</h3>
+      </div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Outdoors</h3>
+      </div>
+      <div>
+        <h3 class="margin2" id="simpleh32">Reading</h3>
+      </div>
     </div>
   </section>
 
