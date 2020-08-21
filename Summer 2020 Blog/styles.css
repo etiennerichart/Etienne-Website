@@ -6,6 +6,11 @@ div {
     text-align: center;
 }
 
+section {
+    padding-bottom: 0;
+    min-height: unset;
+}
+
 img #loadingBar {
     max-height: 674px;
 }
@@ -127,4 +132,8 @@ th {
 .cyan {
     background-color: cyan;
     color: white;
+}
+
+.right {
+    text-align: right;
 }

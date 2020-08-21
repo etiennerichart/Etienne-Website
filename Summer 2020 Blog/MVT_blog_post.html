@@ -19,7 +19,6 @@
     <link href="../foundations.css" rel="stylesheet" type="text/css" />
     <link href="styles.css" rel="stylesheet" type="text/css" />
     <script src="../basics.js" type="text/javascript"></script>
-
 </head>
 
 <body onload="getNavHeight()" onresize="getNavHeight()">
@@ -188,8 +187,17 @@
                     <th>Bright Colors</th>
                     <td>replace 'm' with ';1m'</td>
                 </tr>
+                <tr>
+                    <th>Hide Cursor</th>
+                    <td>\u001b[?25l</td>
+                    <td></td>
+                    <th>Show Cursor</th>
+                    <td>\u001b[?25h</td>
+                </tr>
             </tbody>
         </table>
+        <p class="right">*You can find a more detailed list of other ANSI Esc Codes <a
+                href="http://ascii-table.com/ansi-escape-sequences.php">here</a></p>
     </section>
 
     <section id="three">
@@ -229,12 +237,59 @@
             <a href="https://www.cameronmacleod.com/blog/reading-wave-python">third one</a> which detailed an
             example program using the wave module.
         </p>
-        <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three chunks:
+        <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three
+            chunks:
         <div><img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif"
-                alt="Image of the RIFF file breakdown" /> </div>
+                alt="Image of the RIFF file breakdown" />
+        </div>
+        When comparing the docs for the wave module with the different chuncks of the WAV format, I realized that I
+        couldn't get all the information from the wave module. As a result I wrote my own <a
+            href="https://github.com/etiennerichart/music-visualized-in-terminal/blob/master/wavParser.py">WAV
+            parser</a>. At the beginning of writing the parser I struggled a lot with correctly converting bytes
+        into letter or numbers with little or big endian. I started out using the <a
+            href="https://docs.python.org/3/library/struct.html">struct</a> module. However, I soon learned about the
+        int
+        <a href="https://docs.python.org/3/library/stdtypes.html#int.from_bytes">class
+            method</a>: <code>int.from_bytes(bytes, byteorder, *, signed=False)</code>. This was much simpler in my
+        opinion as I would not have to use different struct formatters based on the length of the bytes I would need to
+        convert.
         </p>
     </section>
 
+    <section id="five">
+        <h3 id="simpleh3">Creating the Visual</h3>
+        <p>Now that I had my parser working I began to work on creating a visual that would match my audio. I first
+            tried to create a buffer that would preload a specified amout of data and process it so that every data
+            point was represented. My mentor, Thomas Ballinger, who was code reviewing my project proposed that I sample
+            the WAV file in realtime using the wave module's <code>wave.setPos(target)</code> in order to avoid not
+            being able to fit all the visualized data into the time frame of the audio. To get the compute the correct
+            target he proposed I use the time module.
+        </p>
+
+        <p>This worked very well, and so my next step became to convert the data into a color ANSI Esc Code. To give
+            myself some variety I used the <kbd>u"\u001b[48;5;{0-230}"</kbd> extended background colors. To get the widest range of
+            colors I created a function at the start that would go through the document and get the max of the absolute
+            value of the data. To visualize this process I drew from <a
+                href="https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html">Build your own
+                Command Line with ANSI escape codes</a>, which had first inspired me to do this project, to create a
+            loading bar.
+        </p>
+    </section>
+
+    <section id="six">
+        <h3 id="simpleh3">Threading the Visual and Audio</h3>
+
+        <p>My next goal was to get my audio and visual to play together. First, I needed to figure out how to play the
+            audio on the MacOS, preferably without having to install any packages. I finally found
+            <code>os.system("afplay " + WAVFile)</code> but then I realised that my program would wait for the audio to
+            finish playing before displaying the visualization. In order to avoid this problem I had to place the
+            visualization code on a <a href="https://realpython.com/intro-to-python-threading/">thread</a>. Once that
+            was done my audio and visual played in sync. Except, I now noticed a lag in my visualization. On a hunch
+            that the threading was causing the visual lag, I made a <code>.join()</code> call on the thread after the
+            music began playing so that the thread would stop switching back and forth with the main program, resolving
+            the lag.
+        </p>
+    </section>
 
     <footer>
         <a id="bottom" onclick="scrollY()">Top</a>
