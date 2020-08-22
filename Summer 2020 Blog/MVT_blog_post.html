@@ -24,17 +24,13 @@
 <body onload="getNavHeight()" onresize="getNavHeight()">
 
     <nav>
-        <a href="../index.html">Home</a>
-        <a href="./blog.html">Blog</a>
+        <a href="./blog.html">Etienne's Blog</a>
+        <a href="../index.html">Home Site</a>
     </nav>
 
     <header id="top">
-        <h1>Etienne's Blog</h1>
+        <h1>Visualizing Music to the Terminal</h1>
     </header>
-    <br />
-    <div>
-        <h3>Visualizing Music to the Terminal</h3>
-    </div>
 
     <section id="idea">
         <h3 id="simpleh3">The Idea:</h3>
@@ -260,23 +256,91 @@
         <h3 id="simpleh3">Creating the Visual</h3>
         <p>Now that I had my parser working I began to work on creating a visual that would match my audio. I first
             tried to create a buffer that would preload a specified amout of data and process it so that every data
-            point was represented. My mentor, Thomas Ballinger, who was code reviewing my project proposed that I sample
-            the WAV file in realtime using the wave module's <code>wave.setPos(target)</code> in order to avoid not
-            being able to fit all the visualized data into the time frame of the audio. To get the compute the correct
-            target he proposed I use the time module.
+            point was represented. My mentor, <a href="http://ballingt.com/">Thomas Ballinger</a>, who was code
+            reviewing my project proposed that I sample the WAV file in realtime using the wave module's
+            <code>wave.setPos(target)</code> in order to avoid not being able to fit all the visualized data into the
+            time frame of the audio. To compute the correct target he proposed I use the time module to get the amount
+            of time the the file had been playing at each sampling point.
         </p>
 
         <p>This worked very well, and so my next step became to convert the data into a color ANSI Esc Code. To give
-            myself some variety I used the <kbd>u"\u001b[48;5;{0-230}"</kbd> extended background colors. To get the widest range of
-            colors I created a function at the start that would go through the document and get the max of the absolute
-            value of the data. To visualize this process I drew from <a
+            myself some variety I used the <kbd>u"\u001b[48;5;{0-230}"</kbd> extended background colors. To get the
+            widest range of colors I created a function at the start that would go through the document and get the max
+            of the absolute value of the data. To visualize this process I drew from <a
                 href="https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html">Build your own
                 Command Line with ANSI escape codes</a>, which had first inspired me to do this project, to create a
             loading bar.
+
+        <pre><code>
+    <span id="green"># Get max amplitude</span>
+    <span id="blue">def</span> <span id="yellow">get_max_amplitude</span>(<span id="lightblue">self</span>):
+        waveFile <span id="lightblue"></span>= wave.open(laugh, <span id="orange">"r"</span>)
+        length <span id="lightblue"></span>= waveFile.getnframes()
+        width <span id="lightblue"></span>= <span id="blue">self</span>.columns - <span id="number">15</span>
+        <span id="green">#hide cursor</span>
+        sys.stdout.write(<span id="blue">u</span><span id="orange">'\x1b[?25l'</span>)
+        <span id="purple">for</span> i <span id="blue">in</span> range(<span id="number">0</span>, length):
+            waveData <span id="lightblue"></span>= waveFile.readframes(<span id="number">1</span>)
+            data <span id="lightblue"></span>= struct.unpack(<span id="orange">"&lt;h"</span>, waveData)[<span id="number">0</span>]
+            amplitude <span id="lightblue"></span>= data / <span id="number">2</span> ** (<span id="blue">self</span>.bit_depth - <span id="number">1</span>)
+            <span id="purple">if</span> <span id="blue">self</span>.max &lt; amplitude:
+                <span id="blue">self</span>.max <span id="lightblue"></span>= amplitude
+            width_actual <span id="lightblue"></span>= int(width * (i / length))
+            bar <span id="lightblue"></span>= (
+                <span id="orange">"Loading: ["</span>
+                + <span id="orange">"#"</span> * width_actual
+                + <span id="orange">" "</span> * (width - width_actual - <span id="number">1</span>)
+                + <span id="orange">"]"</span>
+                + <span id="orange">"<span id="blue">{:&gt;3.0f}</span>%"</span>.format(i / length * <span id="number">100</span>)
+            )
+            sys.stdout.write(<span id="blue">u</span><span id="orange">"\u001b[1000D"</span> + bar)
+            sys.stdout.flush()
+        sys.stdout.write(<span id="blue">u</span><span id="orange">"\u001b[1000D"</span> + <span id="orange">" "</span> * (<span id="blue">self</span>.columns + <span id="number">2</span>))
+        sys.stdout.flush()
+            </code></pre>
         </p>
     </section>
 
     <section id="six">
+        <h3 id="simpleh3">A More Interesting Visual</h3>
+
+        <p>Looking at my canvas changing from one color to another, I found that my visualization wasn't very
+            interesting. As such I decide to create a ripple pattern starting at the center of the canvas. The
+            centermost ripple would be the color of the current amplitude and move out as more recent amplitudes were
+            sampled.
+        </p>
+
+        <p>In order to do this I created a second program, ripple.py which would take the canvas and return a grid
+            with numbers to match the position of each ripple like this:
+        <pre id="green">
+#  1|1  2|1|2  2|2|2  2|2|2  2|2|2|2  2|2|2|2  3|2|2|2|3  3|2|2|2|3  3|2|2|2|2|3  2|1|1|2  4|3|2|1|1|2|3|4  4|3|2|2|2|2|3|4  
+#  1|1  2|1|2  2|1|2  2|1|2  2|1|1|2  2|1|1|2  3|2|1|2|3  3|2|1|2|3  3|2|1|1|2|3  2|1|1|2  4|3|2|1|1|2|3|4  4|3|2|1|1|2|3|4  
+#              2|2|2  2|1|2  2|2|2|2  2|1|1|2  3|2|1|2|3  3|2|2|2|3  3|2|2|2|2|3                            4|3|2|2|2|2|3|4  
+#                     2|2|2           2|2|2|2  3|2|2|2|3
+
+            </pre>
+        </p>
+
+        <p>The easiest way I found of creating my pattern was to first create a larger square and the cut it down to
+            size. If the columns were odd I would first remove one of the middle columns, if the rows were odd one of
+            the middle rows. After that I would take off the outer two columns or rows until the grid matched my canvas'
+            dimensions.
+        </p>
+
+        <p>With this done I created a list the size of the largest number by sampling the top left corner (<kbd>[0][0]</kbd>).
+            During run time I could add the color of the newest amplitude to the list and pop of the last one.
+        <pre><code><span id="blue">self</span>.ripples_color.pop()
+<span id="blue">self</span>.ripples_color.insert(<span id="number">0</span>, <span id="blue">u</span><span id="orange">"\u001b[48;5;"</span> + <span id="lightgreen">str</span>(<span id="lightgreen">int</span>((amplitude.<span id="yellow">__next__</span>() / <span id="blue">self</span>.max) * <span id="number">230</span>)) + <span id="blue">u</span><span id="orange">"m"</span>)
+        </code></pre>
+        I would
+        access each element of my canvas and based on the number received from the correlating grind cell I could
+        assign it a color.
+        <pre><code><span id="blue">self</span>.word <span id="lightblue"></span>= <span id="blue">self</span>.word + <span id="blue">self</span>.ripples_color[<span id="blue">self</span>.ripples[y][x] - <span id="number">1</span>] + <span id="orange">" "</span>
+        </code></pre>
+        </p>
+    </section>
+
+    <section id="seven">
         <h3 id="simpleh3">Threading the Visual and Audio</h3>
 
         <p>My next goal was to get my audio and visual to play together. First, I needed to figure out how to play the
