@@ -86,6 +86,7 @@
 
 div .image {
     text-align: center;
+    width: 100%;
 }
 
 img {
@@ -263,6 +264,7 @@ input:checked + .slider:before {
 
 .margin {
     margin-top: 23px;
+    margin-bottom: 23px;
 }
 
 .margin2 {
@@ -277,5 +279,12 @@ button {
     .right {
         float: left;
         max-width: 100%;
+    }
+}
+
+@media screen and (min-width: 1015px) {
+    .contact {
+        
+        width: 100%;
     }
 }
