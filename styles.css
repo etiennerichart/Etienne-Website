@@ -144,6 +144,10 @@ img {
     float: right;
     max-width: 400px;
 }
+.right-two {
+    float: right;
+    padding: 15% 20%;
+}
 
 .switch {
     position: relative;
@@ -241,13 +245,21 @@ input:checked + .slider:before {
 .flex-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: baseline;
+    justify-content: space-around;
+    align-items: center;
     align-content: space-around;
 }
 
 .flex-container > div {
     margin: 10px;
+}
+
+.flex-container-two {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    align-content: space-around;
 }
 
 .icon {
@@ -275,6 +287,24 @@ button {
     outline: none;
 }
 
+.otherskills {
+    max-width: 300px;
+    min-width: 300px;
+    float: left;
+}
+
+.other {
+    padding-left: 7%;
+}
+
+.flex-container-three {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: baseline;
+    align-content: space-around;
+}
+
 @media screen and (max-width: 800px) {
     .right {
         float: left;
@@ -286,5 +316,21 @@ button {
     .contact {
         
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 902px) {
+    .flex-container-two {
+        display: unset;
+    }
+    .otherskills {
+        max-width: unset;
+        min-width: unset;
+        float: left;
+    }
+
+    .right-two {
+        float: left;
+        padding: 0;
     }
 }

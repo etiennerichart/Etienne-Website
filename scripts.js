@@ -4,6 +4,16 @@ function getRowWidth() {
     return width;
 }
 
+function otherSkills() {
+  console.log("hi:");
+  var w = document.getElementById("otherskills");
+  var width = document.offsetWidth - w.offsetWidth;
+  console.log(width);
+  var f = document.getElementById("icons");
+  f.style.width = width;
+
+}
+
 function scrollAbout() {
   var y = document.getElementById("about").offsetTop - 65;
   scrollY(y);
