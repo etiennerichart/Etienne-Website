@@ -40,96 +40,96 @@ th {
     padding-right: 5px;
 }
 
-#black{
+.black{
     color: black;
 }
 
-#red{
+.red{
     color: red;
 }
 
-#green{
+.green{
     color: green;
 }
 
-#yellow {
+.yellow {
     color: yellow;
 }
 
-#blue {
+.blue {
     color: blue;
 }
 
-#magenta {
+.magenta {
     color: magenta;
 }
 
-#cyan {
+.cyan {
     color: cyan;
 }
 
-#white {
+.white {
     color: gainsboro;
 }
 
-#blank {
+.blank {
     padding-right: 50px;
 }
 
-#purple {
+.purple {
     color: rgb(152, 5, 152);
 }
 
-#orange {
+.orange {
     color: rgb(232, 91, 3);
 }
 
-#blueT {
+.blueT {
     color: rgb(64, 143, 227)
 }
 
-#darkGreen {
+.darkGreen {
     color: rgb(24, 128, 24);
 }
 
-#errorGreen {
+.errorGreen {
     color: rgb(37, 211, 171);
 }
 
-#methodYellow {
+.methodYellow {
     color: rgb(203, 182, 66);
 }
 
-.black {
+.blackbg {
     background-color: black;
     color: white;
 }
 
-.red {
+.redbg {
     background-color: red;
     color: white;
 }
 
-.green {
+.greenbg {
     background-color: green;
     color: white;
 }
 
-.yellow {
+.yellowbg {
     background-color: yellow;
 }
 
-.blue {
+.bluebg {
     background-color: rgb(50, 50, 232);
     color: white;
 }
 
-.magenta {
+.magentabg {
     background-color: magenta;
     color: white;
 }
 
-.cyan {
+.cyanbg {
     background-color: cyan;
     color: white;
 }
@@ -138,30 +138,30 @@ th {
     text-align: right;
 }
 
-#purple {
+.purple {
     color: rgb(152, 5, 152);
 }
 
-#orange {
+.orange {
     color: rgb(232, 91, 3);
 }
 
-#blue {
+.blue {
     color: rgb(24, 79, 138);
 }
 
-#lightblue{
+.lightblue{
     color: rgb(64, 143, 227)
 }
 
-#green {
+.green {
     color: rgb(24, 128, 24);
 }
 
-#lightgreen, #number {
+.lightgreen, .number {
     color: rgb(37, 211, 171);
 }
 
-#yellow {
+.yellow {
     color: rgb(203, 182, 66);
 }

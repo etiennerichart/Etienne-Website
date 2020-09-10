@@ -82,63 +82,63 @@
                 <tr>
                     <th>Color</th>
                     <th>ANSI Esc Code</th>
-                    <th id="blank"></th>
+                    <th class="blank"></th>
                     <th>Background Color</th>
                     <th>ANSI Esc Code</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td id="black">Black</td>
+                    <td class="black">Black</td>
                     <td>\u001b[30m</td>
                     <td></td>
-                    <td class="black">Black</td>
+                    <td class="blackbg">Black</td>
                     <td>\u001b[40m</td>
                 </tr>
                 <tr>
-                    <td id="red">Red</td>
+                    <td class="red">Red</td>
                     <td>\u001b[31m</td>
                     <td></td>
-                    <td class="red">Red</td>
+                    <td class="redbg">Red</td>
                     <td>\u001b[41m</td>
                 </tr>
                 <tr>
-                    <td id="green">Green</td>
+                    <td class="green">Green</td>
                     <td>\u001b[32m</td>
                     <td></td>
-                    <td class="green">Green</td>
+                    <td class="greenbg">Green</td>
                     <td>\u001b[42m</td>
                 </tr>
                 <tr>
-                    <td id="yellow">Yellow</td>
+                    <td class="yellow">Yellow</td>
                     <td>\u001b[33m</td>
                     <td></td>
-                    <td class="yellow">Yellow</td>
+                    <td class="yellowbg">Yellow</td>
                     <td>\u001b[43m</td>
                 </tr>
                 <tr>
-                    <td id="blue">Blue</td>
+                    <td class="blue">Blue</td>
                     <td>\u001b[34m</td>
                     <td></td>
-                    <td class="blue">Blue</td>
+                    <td class="bluebg">Blue</td>
                     <td>\u001b[44m</td>
                 </tr>
                 <tr>
-                    <td id="magenta">Magenta</td>
+                    <td class="magenta">Magenta</td>
                     <td>\u001b[35m</td>
                     <td></td>
-                    <td class="magenta">Magenta</td>
+                    <td class="magentabg">Magenta</td>
                     <td>\u001b[45m</td>
                 </tr>
                 <tr>
-                    <td id="cyan">Cyan</td>
+                    <td class="cyan">Cyan</td>
                     <td>\u001b[36m</td>
                     <td></td>
-                    <td class="cyan">Cyan</td>
+                    <td class="cyanbg">Cyan</td>
                     <td>\u001b[46m</td>
                 </tr>
                 <tr>
-                    <td id="white">White</td>
+                    <td class="white">White</td>
                     <td>\u001b[37m</td>
                     <td></td>
                     <td>White</td>
@@ -212,8 +212,8 @@
         </p>
 
         <pre><code>
-        <span id="purple">import</span> os
-        rows, columns = os.popen(<span id="orange">'stty size'</span>, <span id="orange"></span>'r'</span>).read().split()
+        <span class="purple">import</span> os
+        rows, columns = os.popen(<span class="orange">'stty size'</span>, <span class="orange"></span>'r'</span>).read().split()
     </code></pre>
 
         <p>With this I was able to initalize a table that fit inside the terminal
@@ -235,7 +235,8 @@
         </p>
         <p>From my first source I learned that the WAV file is a type of Microsoft's RIFF files written in three
             chunks:
-        <div><img src="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif"
+        <!-- scr="http://soundfile.sapp.org/doc/WaveFormat/wav-sound-format.gif-->
+        <div><img src="../backup/wav-sound-format.gif"
                 alt="Image of the RIFF file breakdown" />
         </div>
         When comparing the docs for the wave module with the different chuncks of the WAV format, I realized that I
@@ -272,30 +273,30 @@
             loading bar.
 
         <pre><code>
-    <span id="green"># Get max amplitude</span>
-    <span id="blue">def</span> <span id="yellow">get_max_amplitude</span>(<span id="lightblue">self</span>):
-        waveFile <span id="lightblue"></span>= wave.open(laugh, <span id="orange">"r"</span>)
-        length <span id="lightblue"></span>= waveFile.getnframes()
-        width <span id="lightblue"></span>= <span id="blue">self</span>.columns - <span id="number">15</span>
-        <span id="green">#hide cursor</span>
-        sys.stdout.write(<span id="blue">u</span><span id="orange">'\x1b[?25l'</span>)
-        <span id="purple">for</span> i <span id="blue">in</span> range(<span id="number">0</span>, length):
-            waveData <span id="lightblue"></span>= waveFile.readframes(<span id="number">1</span>)
-            data <span id="lightblue"></span>= struct.unpack(<span id="orange">"&lt;h"</span>, waveData)[<span id="number">0</span>]
-            amplitude <span id="lightblue"></span>= data / <span id="number">2</span> ** (<span id="blue">self</span>.bit_depth - <span id="number">1</span>)
-            <span id="purple">if</span> <span id="blue">self</span>.max &lt; amplitude:
-                <span id="blue">self</span>.max <span id="lightblue"></span>= amplitude
-            width_actual <span id="lightblue"></span>= int(width * (i / length))
-            bar <span id="lightblue"></span>= (
-                <span id="orange">"Loading: ["</span>
-                + <span id="orange">"#"</span> * width_actual
-                + <span id="orange">" "</span> * (width - width_actual - <span id="number">1</span>)
-                + <span id="orange">"]"</span>
-                + <span id="orange">"<span id="blue">{:&gt;3.0f}</span>%"</span>.format(i / length * <span id="number">100</span>)
+    <span class="green"># Get max amplitude</span>
+    <span class="blue">def</span> <span class="yellow">get_max_amplitude</span>(<span class="lightblue">self</span>):
+        waveFile <span class="lightblue"></span>= wave.open(laugh, <span class="orange">"r"</span>)
+        length <span class="lightblue"></span>= waveFile.getnframes()
+        width <span class="lightblue"></span>= <span class="blue">self</span>.columns - <span class="number">15</span>
+        <span class="green">#hide cursor</span>
+        sys.stdout.write(<span class="blue">u</span><span class="orange">'\x1b[?25l'</span>)
+        <span class="purple">for</span> i <span class="blue">in</span> range(<span class="number">0</span>, length):
+            waveData <span class="lightblue"></span>= waveFile.readframes(<span class="number">1</span>)
+            data <span class="lightblue"></span>= struct.unpack(<span class="orange">"&lt;h"</span>, waveData)[<span class="number">0</span>]
+            amplitude <span class="lightblue"></span>= data / <span class="number">2</span> ** (<span class="blue">self</span>.bit_depth - <span class="number">1</span>)
+            <span class="purple">if</span> <span class="blue">self</span>.max &lt; amplitude:
+                <span class="blue">self</span>.max <span class="lightblue"></span>= amplitude
+            width_actual <span class="lightblue"></span>= int(width * (i / length))
+            bar <span class="lightblue"></span>= (
+                <span class="orange">"Loading: ["</span>
+                + <span class="orange">"#"</span> * width_actual
+                + <span class="orange">" "</span> * (width - width_actual - <span class="number">1</span>)
+                + <span class="orange">"]"</span>
+                + <span class="orange">"<span class="blue">{:&gt;3.0f}</span>%"</span>.format(i / length * <span class="number">100</span>)
             )
-            sys.stdout.write(<span id="blue">u</span><span id="orange">"\u001b[1000D"</span> + bar)
+            sys.stdout.write(<span class="blue">u</span><span class="orange">"\u001b[1000D"</span> + bar)
             sys.stdout.flush()
-        sys.stdout.write(<span id="blue">u</span><span id="orange">"\u001b[1000D"</span> + <span id="orange">" "</span> * (<span id="blue">self</span>.columns + <span id="number">2</span>))
+        sys.stdout.write(<span class="blue">u</span><span class="orange">"\u001b[1000D"</span> + <span class="orange">" "</span> * (<span class="blue">self</span>.columns + <span class="number">2</span>))
         sys.stdout.flush()
             </code></pre>
         </p>
@@ -312,7 +313,7 @@
 
         <p>In order to do this I created a second program, ripple.py which would take the canvas and return a grid
             with numbers to match the position of each ripple like this:
-        <pre id="green">
+        <pre class="green">
 #  1|1  2|1|2  2|2|2  2|2|2  2|2|2|2  2|2|2|2  3|2|2|2|3  3|2|2|2|3  3|2|2|2|2|3  2|1|1|2  4|3|2|1|1|2|3|4  4|3|2|2|2|2|3|4  
 #  1|1  2|1|2  2|1|2  2|1|2  2|1|1|2  2|1|1|2  3|2|1|2|3  3|2|1|2|3  3|2|1|1|2|3  2|1|1|2  4|3|2|1|1|2|3|4  4|3|2|1|1|2|3|4  
 #              2|2|2  2|1|2  2|2|2|2  2|1|1|2  3|2|1|2|3  3|2|2|2|3  3|2|2|2|2|3                            4|3|2|2|2|2|3|4  
@@ -329,13 +330,13 @@
 
         <p>With this done I created a list the size of the largest number by sampling the top left corner (<kbd>[0][0]</kbd>).
             During run time I could add the color of the newest amplitude to the list and pop of the last one.
-        <pre><code><span id="blue">self</span>.ripples_color.pop()
-<span id="blue">self</span>.ripples_color.insert(<span id="number">0</span>, <span id="blue">u</span><span id="orange">"\u001b[48;5;"</span> + <span id="lightgreen">str</span>(<span id="lightgreen">int</span>((amplitude.<span id="yellow">__next__</span>() / <span id="blue">self</span>.max) * <span id="number">230</span>)) + <span id="blue">u</span><span id="orange">"m"</span>)
+        <pre><code><span class="blue">self</span>.ripples_color.pop()
+<span class="blue">self</span>.ripples_color.insert(<span class="number">0</span>, <span class="blue">u</span><span class="orange">"\u001b[48;5;"</span> + <span class="lightgreen">str</span>(<span class="lightgreen">int</span>((amplitude.<span class="yellow">__next__</span>() / <span class="blue">self</span>.max) * <span class="number">230</span>)) + <span class="blue">u</span><span class="orange">"m"</span>)
         </code></pre>
         I would
         access each element of my canvas and based on the number received from the correlating grind cell I could
         assign it a color.
-        <pre><code><span id="blue">self</span>.word <span id="lightblue"></span>= <span id="blue">self</span>.word + <span id="blue">self</span>.ripples_color[<span id="blue">self</span>.ripples[y][x] - <span id="number">1</span>] + <span id="orange">" "</span>
+        <pre><code><span class="blue">self</span>.word <span class="lightblue"></span>= <span class="blue">self</span>.word + <span class="blue">self</span>.ripples_color[<span class="blue">self</span>.ripples[y][x] - <span class="number">1</span>] + <span class="orange">" "</span>
         </code></pre>
         </p>
     </section>

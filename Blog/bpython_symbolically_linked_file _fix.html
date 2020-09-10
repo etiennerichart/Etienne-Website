@@ -50,61 +50,61 @@
             under the find_modules function.
         </p>
         <pre><code>
-        <span id="blueT">def</span> <span id="methodYellow">find_modules</span>(<span id="blueT">path</span>):
-            <span id="orange">"""Find all modules (and packages) for a given directory."""</span>
-            <span id="purple">if</span> <span id="blueT">not</span> os.path.isdir(path):
-                <span id="darkGreen"># Perhaps a zip file</span>
-                <span id="purple">return</span>
-            <span id="purple">try:</span>
+        <span class="blueT">def</span> <span class="methodYellow">find_modules</span>(<span class="blueT">path</span>):
+            <span class="orange">"""Find all modules (and packages) for a given directory."""</span>
+            <span class="purple">if</span> <span class="blueT">not</span> os.path.isdir(path):
+                <span class="darkGreen"># Perhaps a zip file</span>
+                <span class="purple">return</span>
+            <span class="purple">try:</span>
                 filenames = os.listdir(path)
-            <span id="purple">except</span> <span id="errorGreen">EnvironmentError</span>:
+            <span class="purple">except</span> <span class="errorGreen">EnvironmentError</span>:
                 filenames = []
             
-            <span id="purple">if</span> py3:
+            <span class="purple">if</span> py3:
                 finder = importlib.machinery.FileFinder(path)
             
-            <span id="purple">for</span> name <span id="purple">in</span> filenames:
-                <span id="purple">if</span> <span id="blueT">not</span> <span id="methodYellow">any</span>(name.endswith(suffix) <span id="purple">for</span> suffix <span id="purple">in</span> SUFFIXES):
-                    <span id="darkGreen"># Possibly a package</span>
-                    <span id="purple">if</span> <span id="orange">"."</span> <span id="blueT">in</span> name:
-                        <span id="purple">continue</span>
-                <span id="purple">elif</span> os.path.isdir(os.path.join(path, name)):
-                    <span id="darkGreen"># Unfortunately, CPython just crashes if there is a directory
+            <span class="purple">for</span> name <span class="purple">in</span> filenames:
+                <span class="purple">if</span> <span class="blueT">not</span> <span class="methodYellow">any</span>(name.endswith(suffix) <span class="purple">for</span> suffix <span class="purple">in</span> SUFFIXES):
+                    <span class="darkGreen"># Possibly a package</span>
+                    <span class="purple">if</span> <span class="orange">"."</span> <span class="blueT">in</span> name:
+                        <span class="purple">continue</span>
+                <span class="purple">elif</span> os.path.isdir(os.path.join(path, name)):
+                    <span class="darkGreen"># Unfortunately, CPython just crashes if there is a directory
                     # which ends with a python extension, so work around.</span>
-                    <span id="purple">continue</span>
-                <span id="purple">for</span> suffix <span id="purple">in</span> SUFFIXES:
-                    <span id="purple">if</span> name.endswith(suffix):
-                        name = name[: -<span id="methodYellow">len</span>(suffix)]
-                        <span id="purple">break</span>
-                <span id="purple">if</span> py3 <span id="blueT">and</span> name == <span id="orange">"badsyntax_pep3120"</span>:
-                    <span id="darkGreen"># Workaround for issue #166</span>
-                    <span id="purple">continue</span>
-                <span id="purple">try</span>:
-                    is_package = <span id="blueT">False</span>
-                    <span id="purple">with</span> warnings.catch_warnings():
-                        warnings.simplefilter(<span id="orange">"ignore"</span>, <span id="errorGreen">ImportWarning</span>)
-                        <span id="purple">if</span> py3:
+                    <span class="purple">continue</span>
+                <span class="purple">for</span> suffix <span class="purple">in</span> SUFFIXES:
+                    <span class="purple">if</span> name.endswith(suffix):
+                        name = name[: -<span class="methodYellow">len</span>(suffix)]
+                        <span class="purple">break</span>
+                <span class="purple">if</span> py3 <span class="blueT">and</span> name == <span class="orange">"badsyntax_pep3120"</span>:
+                    <span class="darkGreen"># Workaround for issue #166</span>
+                    <span class="purple">continue</span>
+                <span class="purple">try</span>:
+                    is_package = <span class="blueT">False</span>
+                    <span class="purple">with</span> warnings.catch_warnings():
+                        warnings.simplefilter(<span class="orange">"ignore"</span>, <span class="errorGreen">ImportWarning</span>)
+                        <span class="purple">if</span> py3:
                             spec = finder.find_spec(name)
-                            <span id="purple">if</span> spec <span id="blueT">is None</span>:
-                                <span id="purple">continue</span>
-                            <span id="purple">if</span> spec.submodule_search_locations <span id="blueT">is not None</span>:
+                            <span class="purple">if</span> spec <span class="blueT">is None</span>:
+                                <span class="purple">continue</span>
+                            <span class="purple">if</span> spec.submodule_search_locations <span class="blueT">is not None</span>:
                                 pathname = spec.submodule_search_locations[0]
-                                is_package = <span id="blueT">True</span>
-                            <span id="purple">else</span>:
+                                is_package = <span class="blueT">True</span>
+                            <span class="purple">else</span>:
                                 pathname = spec.origin
-                        <span id="purple">else</span>:
+                        <span class="purple">else</span>:
                             fo, pathname, _ = imp.find_module(name, [path])
-                            <span id="purple">if</span> fo <span id="blueT">is not None</span>:
+                            <span class="purple">if</span> fo <span class="blueT">is not None</span>:
                                 fo.close()
-                            <span id="purple">else</span>:
-                                <span id="darkGreen"># Yay, package</span>
-                                is_package = <span id="blueT">True</span>
-                <span id="purple">except</span> (<span id="errorGreen">ImportError</span>, <span id="errorGreen">IOError</span>, <span id="errorGreen">SyntaxError</span>):
-                    <span id="purple">continue</span>
-                <span id="purple">except</span> <span id="errorGreen">UnicodeEncodeError</span>:
-                    <span id="darkGreen"># Happens with Python 3 when there is a filename in some
+                            <span class="purple">else</span>:
+                                <span class="darkGreen"># Yay, package</span>
+                                is_package = <span class="blueT">True</span>
+                <span class="purple">except</span> (<span class="errorGreen">ImportError</span>, <span class="errorGreen">IOError</span>, <span class="errorGreen">SyntaxError</span>):
+                    <span class="purple">continue</span>
+                <span class="purple">except</span> <span class="errorGreen">UnicodeEncodeError</span>:
+                    <span class="darkGreen"># Happens with Python 3 when there is a filename in some
                     # invalid encoding</span>
-                    <span id="purple">continue</span>
+                    <span class="purple">continue</span>
         </code></pre>
         <p>This first part of the code looks at each file and directory in the path and checks to see if they are a
             package. This part also assigns for where to look for submodules. The second part of the code, shown below,
@@ -112,17 +112,17 @@
             recursion happens and I needed to find a fix.
         </p>
         <pre><code>
-                <span id="purple">else</span>:
-                    <span id="purple">if</span> is_package:
-                            <span id="purple">for</span> subname <span id="purple">in</span> find_modules(pathname):
-                                <span id="purple">if</span> subname != <span id="orange">"__init__"</span>:
-                                    <span id="purple">yield</span> <span id="orange">"</span><span id="blueT">%s</span><span id="orange">.</span><span id="blueT">%s</span><span id="orange">"</span> % (name, subname)
-                    <span id="purple">yield</span> name
+                <span class="purple">else</span>:
+                    <span class="purple">if</span> is_package:
+                            <span class="purple">for</span> subname <span class="purple">in</span> find_modules(pathname):
+                                <span class="purple">if</span> subname != <span class="orange">"__init__"</span>:
+                                    <span class="purple">yield</span> <span class="orange">"</span><span class="blueT">%s</span><span class="orange">.</span><span class="blueT">%s</span><span class="orange">"</span> % (name, subname)
+                    <span class="purple">yield</span> name
         </code></pre>
         
     </section>
 
-    <section id="two">
+    <section class="two">
         <h3 class="simpleh3">Setting up the Test</h3>
         <p>To better diagnose the issue I started out by creating a folder loop through the terminal. I did this using
             the <kbd>mkdir fileName</kbd>
@@ -132,10 +132,10 @@
             <kbd>ln -s ~/bpython/importtestfolder/Level0/Level1
                 ~/bpython/importtestfolder/Level0/Level1/Level2/Level3</kbd>
         </p>
-        <div><img id="fileTree" src="TestFolder1.png" alt="MyFileTree" /></div>
+        <div><img class="fileTree" src="TestFolder1.png" alt="MyFileTree" /></div>
     </section>
 
-    <section id="three">
+    <section class="three">
         <h3 class="simpleh3">My First two Ideas</h3>
         <p>Starting out I wanted to use the subname variable to let me know if we had encountered a path before. The
             subname variable is a String of the relative path that separates each folder by a '.' . We could possibly
@@ -151,7 +151,7 @@
         </p>
     </section>
 
-    <section id="four">
+    <section class="four">
         <h3 class="simpleh3">The Current Solution</h3>
         <p>My current method consits of using the <code>os.path.realpath(path)</code> function. This returns a path with
             the symbolic links collapsed. For example <code>os.path.realpath('Level0.Level1.Level2.Level3')</code>
@@ -161,24 +161,24 @@
             would require traversing the entire list. The second part of the find_modules function now look like this:
         </p>
         <pre><code>
-                <span id="purple">else</span>:
-                    <span id="purple">if</span> is_package:
+                <span class="purple">else</span>:
+                    <span class="purple">if</span> is_package:
                         path_real = os.path.realpath(pathname)
-                        <span id="purple">if</span> path_real <span id="blueT">not in</span> paths:
+                        <span class="purple">if</span> path_real <span class="blueT">not in</span> paths:
                             paths.add(path_real)
-                            <span id="purple">for</span> subname <span id="purple">in</span> find_modules(pathname):
-                                <span id="purple">if</span> subname != <span id="orange">"__init__"</span>:
-                                    <span id="purple">yield</span> <span id="orange">"</span><span id="blueT">%s</span><span id="orange">.</span><span id="blueT">%s</span><span id="orange">"</span> % (name, subname)
-                    <span id="purple">yield</span> name
+                            <span class="purple">for</span> subname <span class="purple">in</span> find_modules(pathname):
+                                <span class="purple">if</span> subname != <span class="orange">"__init__"</span>:
+                                    <span class="purple">yield</span> <span class="orange">"</span><span class="blueT">%s</span><span class="orange">.</span><span class="blueT">%s</span><span class="orange">"</span> % (name, subname)
+                    <span class="purple">yield</span> name
         </code></pre>
     </section>
 
-    <section id="five">
+    <section class="five">
         <h3 class="simpleh3">Finalizing Testing</h3>
         <p>To further test my solution I thought of a new case where a folder on a Right branch links to a Left branch
             and a folder on the Left branch links to the Right branch creating a loop.
         </p>
-        <div><img id="fileTreeTwo" src="TestFolder2.png" alt="MyFileTree2" /></div> <br />
+        <div><img class="fileTreeTwo" src="TestFolder2.png" alt="MyFileTree2" /></div> <br />
         <p>Next I had to incorporate my testing into the bpython unittest files. As part the process I replaced my test
             folders with temporary ones that would be removed after the test had been run. This saves memory and keeps 
             my test confined to just the test file.
@@ -196,100 +196,100 @@
         </p>
 
         <pre><code>
-            <span id="purple">import</span> os
-            <span id="purple">import</span> sys
-            <span id="purple">import</span> tempfile
+            <span class="purple">import</span> os
+            <span class="purple">import</span> sys
+            <span class="purple">import</span> tempfile
 
-            <span id="purple">from</span> bpython._py3compat <span id="purple">import</span> py3
-            <span id="purple">from</span> bpython.test <span id="purple">import</span> unittest
-            <span id="purple">from</span> bpython.importcompletion <span id="purple">import</span> find_modules
+            <span class="purple">from</span> bpython._py3compat <span class="purple">import</span> py3
+            <span class="purple">from</span> bpython.test <span class="purple">import</span> unittest
+            <span class="purple">from</span> bpython.importcompletion <span class="purple">import</span> find_modules
 
 
-            <span id="methodYellow">@unittest.skipIf</span>(<span id="purple">not</span> py3, <span id="orange">"Test doesn't work in python 2."</span>)
-            <span id="blueT">class</span> <span id="errorGreen">TestAvoidSymbolicLinks</span>(<span id="errorGreen">unittest</span>.<span id="errorGreen">TestCase</span>):
-                <span id="blueT">def</span> <span id="methodYellow">setUp</span>(<span id="blueT">self</span>):
-                    <span id="purple">with</span> tempfile.TemporaryDirectory() <span id="purple">as</span> import_test_folder:
-                        os.mkdir(os.path.join(import_test_folder, <span id="orange">"Level0"</span>))
-                        os.mkdir(os.path.join(import_test_folder, <span id="orange">"Right"</span>))
-                        os.mkdir(os.path.join(import_test_folder, <span id="orange">"Left"</span>))
+            <span class="methodYellow">@unittest.skipIf</span>(<span class="purple">not</span> py3, <span class="orange">"Test doesn't work in python 2."</span>)
+            <span class="blueT">class</span> <span class="errorGreen">TestAvoidSymbolicLinks</span>(<span class="errorGreen">unittest</span>.<span class="errorGreen">TestCase</span>):
+                <span class="blueT">def</span> <span class="methodYellow">setUp</span>(<span class="blueT">self</span>):
+                    <span class="purple">with</span> tempfile.TemporaryDirectory() <span class="purple">as</span> import_test_folder:
+                        os.mkdir(os.path.join(import_test_folder, <span class="orange">"Level0"</span>))
+                        os.mkdir(os.path.join(import_test_folder, <span class="orange">"Right"</span>))
+                        os.mkdir(os.path.join(import_test_folder, <span class="orange">"Left"</span>))
 
-                        current_path = os.path.join(import_test_folder, <span id="orange">"Level0"</span>)
-                        <span id="purple">with</span> <span id="methodYellow">open</span>(
-                            os.path.join(current_path, <span id="orange">"__init__.py"</span>), <span id="orange">"x"</span>
-                        ) <span id="purple">as</span> init_file:
-                            <span id="purple">pass</span>
+                        current_path = os.path.join(import_test_folder, <span class="orange">"Level0"</span>)
+                        <span class="purple">with</span> <span class="methodYellow">open</span>(
+                            os.path.join(current_path, <span class="orange">"__init__.py"</span>), <span class="orange">"x"</span>
+                        ) <span class="purple">as</span> init_file:
+                            <span class="purple">pass</span>
 
-                        current_path = os.path.join(current_path, <span id="orange">"Level1"</span>)
+                        current_path = os.path.join(current_path, <span class="orange">"Level1"</span>)
                         os.mkdir(current_path)
-                        <span id="purple">with</span> <span id="methodYellow">open</span>(
-                            os.path.join(current_path, <span id="orange">"__init__.py"</span>), <span id="orange">"x"</span>
-                        ) <span id="purple">as</span> init_file:
-                            <span id="purple">pass</span>
+                        <span class="purple">with</span> <span class="methodYellow">open</span>(
+                            os.path.join(current_path, <span class="orange">"__init__.py"</span>), <span class="orange">"x"</span>
+                        ) <span class="purple">as</span> init_file:
+                            <span class="purple">pass</span>
 
-                        current_path = os.path.join(current_path, <span id="orange">"Level2"</span>)
+                        current_path = os.path.join(current_path, <span class="orange">"Level2"</span>)
                         os.mkdir(current_path)
-                        <span id="purple">with</span> <span id="methodYellow">open</span>(
-                            os.path.join(current_path, <span id="orange">"__init__.py"</span>), <span id="orange">"x"</span>
-                        ) <span id="purple">as</span> init_file:
-                            <span id="purple">pass</span>
+                        <span class="purple">with</span> <span class="methodYellow">open</span>(
+                            os.path.join(current_path, <span class="orange">"__init__.py"</span>), <span class="orange">"x"</span>
+                        ) <span class="purple">as</span> init_file:
+                            <span class="purple">pass</span>
 
                         os.symlink(
-                            os.path.join(import_test_folder, <span id="orange">"Level0/Level1"</span>),
-                            os.path.join(current_path, <span id="orange">"Level3"</span>),
-                            <span id="blueT">True</span>,
+                            os.path.join(import_test_folder, <span class="orange">"Level0/Level1"</span>),
+                            os.path.join(current_path, <span class="orange">"Level3"</span>),
+                            <span class="blueT">True</span>,
                         )
 
-                        current_path = os.path.join(import_test_folder, <span id="orange">"Right"</span>)
-                        <span id="purple">with</span> <span id="methodYellow">open</span>(
-                            os.path.join(current_path, <span id="orange">"__init__.py"</span>), <span id="orange">"x"</span>
-                        ) <span id="purple">as</span> init_file:
-                            <span id="purple">pass</span>
+                        current_path = os.path.join(import_test_folder, <span class="orange">"Right"</span>)
+                        <span class="purple">with</span> <span class="methodYellow">open</span>(
+                            os.path.join(current_path, <span class="orange">"__init__.py"</span>), <span class="orange">"x"</span>
+                        ) <span class="purple">as</span> init_file:
+                            <span class="purple">pass</span>
 
                         os.symlink(
-                            os.path.join(import_test_folder, <span id="orange">"Left"</span>),
-                            os.path.join(current_path, <span id="orange">"toLeft"</span>),
-                            <span id="blueT">True</span>,
+                            os.path.join(import_test_folder, <span class="orange">"Left"</span>),
+                            os.path.join(current_path, <span class="orange">"toLeft"</span>),
+                            <span class="blueT">True</span>,
                         )
 
                         current_path = os.path.join(import_test_folder, "Left")
-                        <span id="purple">with</span> <span id="methodYellow">open</span>(
-                            os.path.join(current_path, <span id="orange">"__init__.py"</span>), <span id="orange">"x"</span>
-                        ) <span id="purple">as</span> init_file:
-                            <span id="purple">pass</span>
+                        <span class="purple">with</span> <span class="methodYellow">open</span>(
+                            os.path.join(current_path, <span class="orange">"__init__.py"</span>), <span class="orange">"x"</span>
+                        ) <span class="purple">as</span> init_file:
+                            <span class="purple">pass</span>
 
                         os.symlink(
-                            os.path.join(import_test_folder, <span id="orange">"Right"</span>),
-                            os.path.join(current_path, <span id="orange">"toRight"</span>),
-                            <span id="blueT">True</span>,
+                            os.path.join(import_test_folder, <span class="orange">"Right"</span>),
+                            os.path.join(current_path, <span class="orange">"toRight"</span>),
+                            <span class="blueT">True</span>,
                         )
 
-                        <span id="blueT">self</span>.modules = <span id="errorGreen">list</span>(find_modules(os.path.abspath(import_test_folder)))
-                        <span id="blueT">self</span>.filepaths = [
-                            <span id="orange">"Left.toRight.toLeft"</span>,
-                            <span id="orange">"Left.toRight"</span>,
-                            <span id="orange">"Left"</span>,
-                            <span id="orange">"Level0.Level1.Level2.Level3"</span>,
-                            <span id="orange">"Level0.Level1.Level2"</span>,
-                            <span id="orange">"Level0.Level1"</span>,
-                            <span id="orange">"Level0"</span>,
-                            <span id="orange">"Right"</span>,
-                            <span id="orange">"Right.toLeft"</span>,
-                            <span id="orange">"Right.toLeft.toRight"</span>,
+                        <span class="blueT">self</span>.modules = <span class="errorGreen">list</span>(find_modules(os.path.abspath(import_test_folder)))
+                        <span class="blueT">self</span>.filepaths = [
+                            <span class="orange">"Left.toRight.toLeft"</span>,
+                            <span class="orange">"Left.toRight"</span>,
+                            <span class="orange">"Left"</span>,
+                            <span class="orange">"Level0.Level1.Level2.Level3"</span>,
+                            <span class="orange">"Level0.Level1.Level2"</span>,
+                            <span class="orange">"Level0.Level1"</span>,
+                            <span class="orange">"Level0"</span>,
+                            <span class="orange">"Right"</span>,
+                            <span class="orange">"Right.toLeft"</span>,
+                            <span class="orange">"Right.toLeft.toRight"</span>,
                         ]
 
-                <span id="blueT">def</span> <span id="methodYellow">test_simple_symbolic_link_loop</span>(<span id="blueT">self</span>):
-                    <span id="purple">for</span> thing in <span id="blueT">self</span>.modules:
-                        <span id="blueT">self</span>.assertTrue(thing <span id="purple">in</span> <span id="blueT">self</span>.filepaths)
-                        <span id="purple">if</span> thing == <span id="orange">"Left.toRight.toLeft"</span>:
-                            <span id="blueT">self</span>.filepaths.remove(<span id="orange">"Right.toLeft"</span>)
-                            <span id="blueT">self</span>.filepaths.remove(<span id="orange">"Right.toLeft.toRight"</span>)
-                        <span id="purple">if</span> thing == <span id="orange">"Right.toLeft.toRight"</span>:
-                            <span id="blueT">self</span>.filepaths.remove(<span id="orange">"Left.toRight.toLeft"</span>)
-                            <span id="blueT">self</span>.filepaths.remove(<span id="orange">"Left.toRight"</span>)
-                        <span id="blueT">self</span>.filepaths.remove(thing)
-                    <span id="blueT">self</span>.assertFalse(<span id="blueT">self</span>.filepaths)
+                <span class="blueT">def</span> <span class="methodYellow">test_simple_symbolic_link_loop</span>(<span class="blueT">self</span>):
+                    <span class="purple">for</span> thing in <span class="blueT">self</span>.modules:
+                        <span class="blueT">self</span>.assertTrue(thing <span class="purple">in</span> <span class="blueT">self</span>.filepaths)
+                        <span class="purple">if</span> thing == <span class="orange">"Left.toRight.toLeft"</span>:
+                            <span class="blueT">self</span>.filepaths.remove(<span class="orange">"Right.toLeft"</span>)
+                            <span class="blueT">self</span>.filepaths.remove(<span class="orange">"Right.toLeft.toRight"</span>)
+                        <span class="purple">if</span> thing == <span class="orange">"Right.toLeft.toRight"</span>:
+                            <span class="blueT">self</span>.filepaths.remove(<span class="orange">"Left.toRight.toLeft"</span>)
+                            <span class="blueT">self</span>.filepaths.remove(<span class="orange">"Left.toRight"</span>)
+                        <span class="blueT">self</span>.filepaths.remove(thing)
+                    <span class="blueT">self</span>.assertFalse(<span class="blueT">self</span>.filepaths)
         
-                <span id="purple">if</span> <span id="blueT">__name__</span> == <span id="orange">"__main__"</span>:
+                <span class="purple">if</span> <span class="blueT">__name__</span> == <span class="orange">"__main__"</span>:
                     unittest.main()
         </pre></code>
 
