@@ -23,8 +23,8 @@
 </head>
 
 <body id="top"
-  onload="getNavHeight(), toggleGifs(), setMaxProjectHeight(), refreshSlides(), refreshTimes(), dotUpdate(2), dropdowns()"
-  onresize="getNavHeight(), refreshSlides(), dotUpdate(2)">
+  onload="getNavHeight(), toggleGifs(), refreshTimes(), setMaxProjectHeight(), refreshSlides(), dropdowns()"
+  onresize="getNavHeight(), refreshSlides()">
 
   <nav>
     <a onclick="scrollAbout()">About</a>
@@ -48,7 +48,7 @@
 
   <section id="about" class="about">
     <div class="half-column">
-      <h3>Hello, I'm Etienne<br /><span id="simpleh3">A Computer Science student</span></h3>
+      <h3>Hello, I'm Etienne<br /><span class="simpleh3">A Computer Science student</span></h3>
       <p>Welcome to my website. I am a sophomore at <a href="carleton.edu" target="_blank">Carleton College</a> in
         Northfield, MN.</p>
       <p>I am exploring the different fields of CS. I'm interested in the aplications of CS for raising awareness
@@ -76,16 +76,17 @@
     <h3>Experience</h3>
     <div id="timeline">
       <div class="myTimes">
-        <h3 id="simpleh3">Summer 2020</h3>
+        <h3 class="simpleh3">Summer 2020</h3>
       </div>
       <div class="myTimes">
-        <h3 id="simpleh3">Summer 2021</h3>
+        <h3 class="simpleh3">Summer 2021</h3>
       </div>
     </div>
 
     <div class="prevnext">
-      <span class="dot" id="1" onclick="currentSlide(1), setMaxProjectHeight()"></span>
-      <span class="dot" id="2" onclick="currentSlide(2), setMaxProjectHeight()"></span>
+      <span class="dot" onclick="currentSlide(1), setMaxProjectHeight()"></span>
+      <span class="dot" onclick="currentSlide(2), setMaxProjectHeight()"></span>
+      <span class="dot" onclick="currentSlide(3), setMaxProjectHeight()"></span>
     </div>
     <br />
     <div class="row">
@@ -156,6 +157,21 @@
           </div>
         </div>
       </div>
+      <div class="mySlides column">
+        <div class="card">
+          <div class="image"><img class="curtsies gif" src="./backup/tron.gif" alt="Using curtsies for Tron game" />
+          </div>
+          <div class="info">
+            <button class="collapsible experience">
+              <h3><a href="https://curtsies.readthedocs.io/en/latest/" target="_blank">Harvard GD50</a>&nbsp;&nbsp;<span
+                  class="glyphicon glyphicon-menu-down"></span></h3>
+            </button>
+            <div class="content">
+              
+          </div>
+        </div>
+      </div>
+      
     </div>
   </section>
 
@@ -165,7 +181,7 @@
       <!-- img src https://apps.carleton.edu/reason_package/reason_4.0/www/images/1301326.png-->
       <img class="carleton float-left" src="https://apps.carleton.edu/reason_package/reason_4.0/www/images/1301326.png"
         alt="Carleton logo" />
-      &nbsp;&nbsp;<h3 id="simpleh3" class="float-left height-100">2019 - 2023</h3><br /><br /><br /><br /><br />
+      &nbsp;&nbsp;<h3 class="simpleh3" class="float-left height-100">2019 - 2023</h3><br /><br /><br /><br /><br />
       <p>Computer Science Major, Possible Economics Major</p>
       Relevant <a href="https://www.carleton.edu/computer-science/courses/" target="_blank">CS Courses</a>:
       <ul>
@@ -178,7 +194,7 @@
 
     </div>
     <div class="half-column other">
-      <h3 id="simpleh3">Online Courses</h4>
+      <h3 class="simpleh3">Online Courses</h4>
         <button class="collapsible">Programming Languages&nbsp;&nbsp;<span class="glyphicon glyphicon-menu-down"></span>
       </h3></button>
       <div class="content">
@@ -216,22 +232,22 @@
     <div class="main flex-container-two">
       <div class="otherskills">
         <h3>Other Skills</h3>
-        <h3 id="simpleh3">Languages</h3>
+        <h3 class="simpleh3">Languages</h3>
         <ul>
           <li>Mandarin Chinese: Intermediate</li>
           <li>French: Fluent</li>
         </ul>
-        <h3 id="simpleh3">Game Engines</h3>
+        <h3 class="simpleh3">Game Engines</h3>
         <ul>
           <li>LÖVE (Love2d)</li>
           <li>Unity</li>
         </ul>
-        <h3 id="simpleh3">Sports</h3>
+        <h3 class="simpleh3">Sports</h3>
         <ul>
           <li>Ultimate Frisbee</li>
           <li>Crew (Rowing)</li>
         </ul>
-        <h3 id="simpleh3">Clubs</h3>
+        <h3 class="simpleh3">Clubs</h3>
         <ul>
           <li>Cars Club: Building a self-driving go-cart</li>
         </ul>
@@ -280,22 +296,22 @@
     <h3>Interests</h3>
     <div class="flex-container-three">
       <div>
-        <h3 class="margin2" id="simpleh32">Art</h3>
+        <h3 class="margin2 simpleh32">Art</h3>
       </div>
       <div>
-        <h3 class="margin2" id="simpleh32">Video Games</h3>
+        <h3 class="margin2 simpleh32">Video Games</h3>
       </div>
       <div>
-        <h3 class="margin2" id="simpleh32">Environment</h3>
+        <h3 class="margin2 simpleh32">Environment</h3>
       </div>
       <div>
-        <h3 class="margin2" id="simpleh32">Travel</h3>
+        <h3 class="margin2 simpleh32">Travel</h3>
       </div>
       <div>
-        <h3 class="margin2" id="simpleh32">Outdoors</h3>
+        <h3 class="margin2 simpleh32">Outdoors</h3>
       </div>
       <div>
-        <h3 class="margin2" id="simpleh32">Reading</h3>
+        <h3 class="margin2 simpleh32">Reading</h3>
       </div>
     </div>
   </section>

@@ -32,7 +32,7 @@
     </header>
 
     <section id="idea">
-        <h3 id="simpleh3">The Issue:</h3>
+        <h3 class="simpleh3">The Issue:</h3>
         <p>This issue was first reported by BrianJian on bpython's <a
                 href="https://github.com/bpython/bpython/issues/806"><i class="fa fa-github"></i> issues page</a>. BrianJian found that his computer
             would start using a lot of its CPU when opening up. After some discussion it was believed that this was a
@@ -43,7 +43,7 @@
     </section>
 
     <section id="one">
-        <h3 id="simpleh3">Understanding the Code</h3>
+        <h3 class="simpleh3">Understanding the Code</h3>
         <p>My first step towards solving this issue was to understand the code that traversed the files. This code was
             located in <a
                 href="https://github.com/bpython/bpython/blob/master/bpython/importcompletion.py">importcompletion.py</a>
@@ -123,7 +123,7 @@
     </section>
 
     <section id="two">
-        <h3 id="simpleh3">Setting up the Test</h3>
+        <h3 class="simpleh3">Setting up the Test</h3>
         <p>To better diagnose the issue I started out by creating a folder loop through the terminal. I did this using
             the <kbd>mkdir fileName</kbd>
             command in the terminal. After having a long enough chain of folders I created a final folder symbolically
@@ -136,7 +136,7 @@
     </section>
 
     <section id="three">
-        <h3 id="simpleh3">My First two Ideas</h3>
+        <h3 class="simpleh3">My First two Ideas</h3>
         <p>Starting out I wanted to use the subname variable to let me know if we had encountered a path before. The
             subname variable is a String of the relative path that separates each folder by a '.' . We could possibly
             tell if we were in a loop by watching for repetion like Level0.Level1.Level2.Level3.Level2 in the subname.
@@ -152,7 +152,7 @@
     </section>
 
     <section id="four">
-        <h3 id="simpleh3">The Current Solution</h3>
+        <h3 class="simpleh3">The Current Solution</h3>
         <p>My current method consits of using the <code>os.path.realpath(path)</code> function. This returns a path with
             the symbolic links collapsed. For example <code>os.path.realpath('Level0.Level1.Level2.Level3')</code>
             would return Level0.Level1 as its result. To best use this I created a variable, <code><var>paths</var></code> , outside the
@@ -174,7 +174,7 @@
     </section>
 
     <section id="five">
-        <h3 id="simpleh3">Finalizing Testing</h3>
+        <h3 class="simpleh3">Finalizing Testing</h3>
         <p>To further test my solution I thought of a new case where a folder on a Right branch links to a Left branch
             and a folder on the Left branch links to the Right branch creating a loop.
         </p>

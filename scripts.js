@@ -5,10 +5,8 @@ function getRowWidth() {
 }
 
 function otherSkills() {
-  console.log("hi:");
   var w = document.getElementById("otherskills");
   var width = document.offsetWidth - w.offsetWidth;
-  console.log(width);
   var f = document.getElementById("icons");
   f.style.width = width;
 
@@ -74,11 +72,12 @@ function toggleGifs() {
 
 var timeIndex = 1;
 var slideIndex = 1;
-
-showTimes(timeIndex);
+var b;
+var dots = document.getElementsByClassName("dot");
+var times = document.getElementsByClassName("myTimes");
 
 function refreshSlides() {
-  showSlides(timeIndex)
+  showSlides(slideIndex)
 }
 
 function refreshTimes() {
@@ -102,7 +101,6 @@ function currentSlide(n) {
 
 function showTimes(n) {
   var i;
-  var times = document.getElementsByClassName("myTimes");
   if (n > 1) { timeIndex = 1 }
   if (n < 1) { timeIndex = 1 }
   for (i = 0; i < times.length; i++) {
@@ -112,16 +110,14 @@ function showTimes(n) {
     times[timeIndex - 1].style.display = "block";
   }
 }
-
-var b;
+showTimes(timeIndex);
 
 function showSlides(n) {
   var i;  
   var margins;
-  var dots = document.getElementsByClassName("dot");
   var slides = document.getElementsByClassName("mySlides");
-  if (n > 2) { slideIndex = 1 }
-  if (n < 1) { slideIndex = 2 }
+  if (n > slides.length) { slideIndex = 1 }
+  else if (n < 1) { slideIndex = slides.length}
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
     dots[i].classList.remove("active");
@@ -129,25 +125,31 @@ function showSlides(n) {
   dots[n - 1].classList.add("active");
   b = (getRowWidth() / 500)
   b = Math.floor(b)
-  if (b > 2) {b = 2}
-  if (b < 1) {
+  if (b > slides.length) {b = slides.length}
+  else if (b < 1) {
     b = 1;
   } 
   margins = Math.floor((getRowWidth() - (500 * b)) / (b * 2)) - 1;
   for (i = 0; i < b; i++) {
-    slides[slideIndex-1+i].style.display = "block";
-    slides[slideIndex-1+i].setAttribute("style", "margin-left: " + String(margins) + "px; margin-right: " + String(margins) + "px");
+    var slide = slides[slideIndex-1+i];
+    if (slide){
+      slide.style.display = "block";
+      slide.setAttribute("style", "margin-left: " + String(margins) + "px; margin-right: " + String(margins) + "px");
+    } else {
+      slides[slideIndex-2+i].setAttribute("style", "margin: auto; float: unset");
+    }
   }
-  
+  dots[slideIndex-1].classList.add("active");
+  dotUpdate();
 }
-function dotUpdate(numDots) {
-  var nm = numDots;
-  var dots = document.getElementsByClassName("prevnext")[0];
-  if (nm == b) {
-    dots.style.display = "none";
-  }
-  else {
-    dots.style.display = "block";
+
+function dotUpdate() {
+  var nm = dots.length - b;
+  Array.prototype.forEach.call(dots, function(dot){
+    dot.style.display = "none";
+  });
+  for (i = 0; i <= nm; i++){
+    dots[i].style.display = "inline-block";
   }
 }
 

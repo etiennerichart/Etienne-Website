@@ -95,12 +95,12 @@ h3 {
     font-weight: 600;
 }
 
-#simpleh3 {
+.simpleh3 {
     font-weight: 400;
     color: rgb(81, 86, 91);
 }
 
-#simpleh32 {
+.simpleh32 {
     font-weight: 400;
     color: wheat;
 }
