@@ -111,7 +111,14 @@ img {
 
 .curtsies {
     max-height: 500px;
-    padding: 10px;
+    clip: rect(40px,600px,400px,2px);
+}
+
+.curtsies, .gd50 {
+    margin: 15px;
+    max-width: calc(100% - 30px);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .collapsible {
