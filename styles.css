@@ -1,354 +1,377 @@
 #experiences {
-    background-color: beige;
+  background-color: beige;
 }
 
 #about {
-    background-color: white;
+  background-color: white;
 }
 
 #education {
-    background-color: rgb(248, 204, 109);
+  background-color: rgb(248, 204, 109);
 }
 
 #other {
-    background-color: rgb(145, 223, 135);
+  background-color: rgb(145, 223, 135);
 }
 
 #interests {
-    color: white;
-    background-color: rgb(45, 45, 162);
+  color: white;
+  background-color: rgb(45, 45, 162);
 }
 
 .column {
-    float: left;
-    min-height: 50%;
-    max-width: 500px;
-    margin-bottom: 16px;
-    padding: 0 8px;
-    display: block;
+  float: left;
+  min-height: 50%;
+  max-width: 500px;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  display: block;
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    background-color: white;
-    overflow: hidden;
-    transition: height 0.2s ease-out;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  overflow: hidden;
+  transition: height 0.2s ease-out;
 }
 
 .info {
-    padding: 0 16px;
+  padding: 0 16px;
 }
 
-.info::after, .row::after {
-    content: "";
-    clear: both;
-    display: table;
+.info::after,
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
 .job {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .prevnext {
-    text-align: center;
+  text-align: center;
 }
 
-.prev, .next {
-    cursor: pointer;
-    margin-top: -22px;
-    padding: 16px;
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    user-select: none;
-    border-radius: 3px 3px 3px 3px;
+.prev,
+.next {
+  cursor: pointer;
+  margin-top: -22px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  user-select: none;
+  border-radius: 3px 3px 3px 3px;
 }
 
-.prev:hover, .next:hover {
-    background-color: grey;
+.prev:hover,
+.next:hover {
+  background-color: grey;
 }
 
 .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}  
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
 
 .dot.active {
-    background-color: rgb(12, 11, 11);
+  background-color: rgb(12, 11, 11);
 }
 
 .dot:hover {
-    background-color: #717171;
+  background-color: #717171;
 }
 
 .dot.active:hover {
-    background-color: rgb(12, 11, 11);
+  background-color: rgb(12, 11, 11);
 }
 
 div .image {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .bpython {
-    max-height: 620px;
+  max-height: 620px;
 }
 
 .bpythontwo {
-    max-height: 100px;
+  max-height: 100px;
 }
 
 .curtsies {
-    max-height: 500px;
-    clip: rect(40px,600px,400px,2px);
+  max-height: 500px;
+  clip: rect(40px, 600px, 400px, 2px);
 }
 
-.curtsies, .gd50 {
-    margin: 15px;
-    max-width: calc(100% - 30px);
-    border-radius: 5px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+.curtsies,
+.gd50 {
+  margin: 15px;
+  max-width: calc(100% - 30px);
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .collapsible {
-    border: none;
-    background: none;
+  border: none;
+  background: none;
 }
 
 .content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .carleton {
-    max-height: 100px;
+  max-height: 100px;
 }
 
 .float-left {
-    float: left;
+  float: left;
 }
 
 .height-100 {
-    padding-top: 32.4px;
-    padding-bottom: 32.4px;
-    padding-left: 15px;
-    margin: 0;
+  padding-top: 32.4px;
+  padding-bottom: 32.4px;
+  padding-left: 15px;
+  margin: 0;
 }
 
 .myTimes {
-    text-align: center;
+  text-align: center;
 }
 
 .right {
-    float: right;
-    max-width: 400px;
+  float: right;
+  max-width: 400px;
 }
 .right-two {
-    float: right;
-    padding: 15% 20%;
+  float: right;
+  padding: 15% 20%;
 }
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 14px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
-.switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+  background-color: #2196f3;
 }
 
 input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2196f3;
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 /* Rounded sliders */
 .slider.round {
-    border-radius: 34px;
+  border-radius: 34px;
 }
 
 .slider.round:before {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 .navText {
-    color: white;
-    padding-top: 19.575px;
+  color: white;
+  font-weight: normal;
+  max-height: 50px;
+  min-height: 34px;
 }
 
 .resume {
-    background-color: lightblue;
-    border: none;
-    padding: 15px 32px;
-    transition-duration: 0.4s;
-    text-decoration: none;
-    text-emphasis: none;
-    border: 2px solid lightblue;
+  background-color: lightblue;
+  border: none;
+  padding: 15px 32px;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  text-emphasis: none;
+  border: 2px solid lightblue;
+}
+
+label {
+  margin-bottom: 0;
 }
 
 .resume:hover {
-    background-color: white;
-    padding: 15px 32px;
+  background-color: white;
+  padding: 15px 32px;
 }
 
 .resume a {
-    text-decoration: none;
-    text-emphasis: none;
+  text-decoration: none;
+  text-emphasis: none;
 }
 
 .resume a:hover {
-    color: black;
+  color: black;
 }
 
 .avatar {
-    width: 60%;
-    max-width: 320px;
-    border-radius: 50%;
-    border: 6px solid black;
+  width: 60%;
+  max-width: 320px;
+  border-radius: 50%;
+  border: 6px solid black;
+  background-color: black;
 }
 
 .flex-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
 }
 
 .flex-container > div {
-    margin: 10px;
+  margin: 10px;
 }
 
 .flex-container-two {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    align-content: space-around;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: space-around;
 }
 
 .icon {
-    width: 80px;
+  width: 80px;
 }
 
 .iconSpecial {
-    width: 120px;
+  width: 120px;
 }
 
 .iconSpecialTwo {
-    width: 100px;
+  width: 100px;
 }
 
 .margin {
-    margin-top: 23px;
-    margin-bottom: 23px;
+  margin-top: 23px;
+  margin-bottom: 23px;
 }
 
 .margin2 {
-    padding: 30px 50px;
+  padding: 30px 50px;
 }
 
 button {
-    outline: none;
+  outline: none;
 }
 
 .otherskills {
-    max-width: 300px;
-    min-width: 300px;
-    float: left;
+  max-width: 300px;
+  min-width: 300px;
+  float: left;
 }
 
 .other {
-    padding-left: 7%;
+  padding-left: 7%;
 }
 
 .flex-container-three {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: baseline;
-    align-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
+  align-content: space-around;
+}
+
+li > p {
+  padding: 15px;
+  line-height: 20px;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.flex-container-four {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: stretch;
 }
 
 @media screen and (max-width: 800px) {
-    .right {
-        float: left;
-        max-width: 100%;
-    }
-    .other {
-        padding-left: 0;
-    }
+  .right {
+    float: left;
+    max-width: 100%;
+  }
+  .other {
+    padding-left: 0;
+  }
 }
 
 @media screen and (min-width: 1015px) {
-    .contact {
-        
-        width: 100%;
-    }
+  .contact {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 902px) {
-    .flex-container-two {
-        display: unset;
-    }
-    .otherskills {
-        max-width: unset;
-        min-width: unset;
-        float: left;
-    }
+  .flex-container-two {
+    display: unset;
+  }
+  .otherskills {
+    max-width: unset;
+    min-width: unset;
+    float: left;
+  }
 
-    .right-two {
-        float: left;
-        padding: 0;
-    }
+  .right-two {
+    float: left;
+    padding: 0;
+  }
 }
