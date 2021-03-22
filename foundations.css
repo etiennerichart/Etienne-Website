@@ -34,8 +34,6 @@ header h1 {
 nav {
   overflow: hidden;
   background-color: black;
-  position: fixed;
-  top: 0;
   width: 100%;
   z-index: 3;
 }
@@ -63,8 +61,13 @@ nav a:hover {
 }
 
 .navbar {
+  border: none;
   border-radius: 0;
   margin-bottom: 0;
+}
+
+.navbar * {
+  padding-left: 0;
 }
 
 .navbar-toggle.navC {
@@ -113,6 +116,16 @@ h3 {
   font-size: 32px;
   font-style: normal;
   font-weight: 600;
+}
+
+.flexrow {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flexrow > h3 {
+  margin: 0 10px;
 }
 
 .simpleh3 {
